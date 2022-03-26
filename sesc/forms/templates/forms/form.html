@@ -1,0 +1,228 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<main class="py-3 text-left container">
+    <div class="row">
+        <div class="mx-auto">
+            <div class="rounded shadow">
+                {% include 'forms/navbar_back.html' %}
+                <article class="container pb-3">
+                    <p class="text-end mb-0">Принято Ученым советом СУНЦ</p>
+                    <p class="text-end lh-sm">протокол № 10 от 16 декабря 2021 года</p>
+                    <p class="text-center mb-0 lead">Учебный план для 10 классов.</p>
+                    <p class="text-center lh-sm mb-0">Направление подготовки: Гуманитарные науки. Профиль подготовки: Гуманитарный.</p>
+                    <p class="text-center lh-sm">Углубленные предметы: русский язык, литература, иностранный язык, история.</p>
+                    
+                    {% if error %}
+                    <div class="card text-white bg-danger mb-3">
+                        <div class="card-body">
+                            <p class="card-text">{{ error }}</p>
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                    <form method="post">
+                        <div style="display: none;">
+                            <!-- Временный ID; Не влияет на окончательный ID -->
+                            {{ form.slug }}
+                        </div>
+                        {% csrf_token %}
+                        <div class="mb-4">
+                            <p class="mb-0">Обучающийся</p>
+                            {{ form.name }}
+                            <small class="text-secondary">Ф.И.О. полностью в именительном падеже</small>
+                        </div>
+
+                        <p class="mb-4 lead">Срок реализации учебного плана с "1" сентября 2022 до "31" мая 2024</p>
+
+                        <div id="table">
+                            <table class="table table-bordered text-center align-middle table-sm mb-4">
+                                <tbody>
+                                    <tr><td colspan="2">&nbsp;</td><td colspan="3"><strong>Количество часов</strong></td><td colspan="3"><strong>Формы аттестации</strong></td></tr>
+
+                                    <tr><td>Предметные области</td><td>Предметы (уровень освоения: <mark>Б - базовый</mark>, <mark>У - углубленный</mark>)</td><td>в неделю (10 класс)</td><td> в неделю (11 класс)</td><td>за два года (70 учебных недель)</td><td>Текущая аттетсатция</td><td>Промежуточная аттестация: зимняя и летняя сессии</td><td>Итоговая аттестация</td></tr>
+
+                                    <tr><td colspan="8" class="table-warning lead">Блок 1: обязательные учебные предметы</td></tr>
+
+                                    <tr><td rowspan="2">Русский язык и литература</td><td class="table-success">Русский язык (У)</td><td>3</td><td>3</td><td>210</td><td rowspan="11">отметка</td><td>экзамен</td><td>ЕГЭ</td></tr>
+
+                                    <tr><td class="table-success">Литература (У)</td><td>5</td><td>5</td><td>350</td><td>экзамен</td><td>по выбору</td></tr>
+
+                                    <tr><td>Родной язык и родная литература</td><td>Родная русская литература (Б)</td><td>1</td><td>1</td><td>70</td><td colspan="2" class="table-secondary"></td></tr>
+
+                                    <tr><td>Иностранные языки</td><td class="table-success">Иностранный язык (У)</td><td>6</td><td>6</td><td>420</td><td>диф. зачет</td><td rowspan="2">по выбору</td></tr>
+
+                                    <tr><td rowspan="2">Общественные науки</td><td class="table-success">История (У)</td><td>4</td><td>4</td><td>280</td><td>экзамен</td></tr>
+
+                                    <tr><td>МХК (Б)</td><td>1</td><td>1</td><td>70</td><td colspan="2" class="table-secondary"></td></tr>
+
+                                    <tr><td>Математика и информатика</td><td>Математика: алгебра и начала математического анализа, геометрия (Б)</td><td>4</td><td>4</td><td>280</td><td class="table-secondary"></td><td>ЕГЭ</td></tr>
+
+                                    <tr><td>Естественные науки</td><td>Астрономия (Б)*</td><td>1</td><td>0</td><td>35</td><td colspan="2" rowspan="4" class="table-secondary"></td></tr>
+
+                                    <tr><td rowspan="2">Физическая культура, экология и ОБЖ</td><td>Физическая культура (Б)</td><td>2</td><td>2</td><td>140</td></tr>
+
+                                    <tr><td>Основы безопасности жизнедеятельности (Б)**</td><td>1</td><td>1</td><td>70</td></tr>
+
+                                    <tr><td colspan="2">Индивидуальный проект ***</td><td>1</td><td>1</td><td>70</td></tr>
+
+                                    <tr class="table-danger"><td colspan="2">Всего часов Блок 1</td><td>29</td><td>28</td><td>1995</td><td colspan="3"></td></tr>
+
+                                    <tr class="table-warning"><td colspan="2"><strong>Доступно часов для выбора учебных предметов по выбору и элективных курсов</strong></td><td>8</td><td>9</td><td colspan="4"></td></tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table table-bordered text-center align-middle table-sm">
+                                <tbody>
+                                    <tr><td colspan="2">&nbsp;</td><td colspan="3"><strong>Количество часов</strong></td><td colspan="3"><strong>Формы аттестации</strong></td></tr>
+
+                                    <tr><td>Предметные области</td><td>Предметы (уровень освоения: <mark>Б - базовый</mark>, <mark>У - углубленный</mark>)</td><td>в неделю (10 класс)</td><td> в неделю (11 класс)</td><td>за два года (70 учебных недель)</td><td>Текущая аттетсатция</td><td>Промежуточная аттестация: зимняя и летняя сессии</td><td>Итоговая аттестация</td></tr>
+
+                                    <tr><td colspan="8" class="table-warning lead">Блок 2: часть, формируемая участниками образовательных отношений</td></tr>
+
+                                    <tr><td colspan="8" class="table-warning lead">Учебные предметы по выбору</td></tr>
+
+                                    <tr><td>Иностранные языки</td><td>Второй иностранный язык (Б)</td><td>
+                                        {{ form.d1 }}
+                                        <small>макс. 2</small>
+                                    </td><td>
+                                        {{ form.d2 }}
+                                        <small>макс. 2</small>
+                                    </td><td>≤ 140</td><td rowspan="6">отметка</td><td>диф. зачет</td><td rowspan="3">по выбору</td></tr>
+
+                                    <tr><td rowspan="3">Общественные науки</td><td>География (Б)</td><td>
+                                        {{ form.d3 }}
+                                        <small>макс. 1</small>
+                                    </td><td>
+                                        {{ form.d4 }}
+                                        <small>макс. 1</small>
+                                    </td><td>≤70</td><td class="table-secondary"></td></tr>
+
+                                    <tr><td>Обществознание (Б)</td><td>
+                                        {{ form.d5 }}
+                                        <small>макс.2</small>
+                                    </td><td>
+                                        {{ form.d6 }}
+                                        <small>макс. 2</small>
+                                    </td><td>≤140</td><td>диф. зачет</td></tr>
+
+                                    <tr><td>Теория познания (Б)</td><td>
+                                        {{ form.d7 }}
+                                        <small>макс. 1</small>
+                                    </td><td>
+                                        {{ form.d8 }}
+                                        <small>макс. 1</small>
+                                    </td><td>≤70</td><td colspan="2" class="table-secondary"></td></tr>
+
+                                    <tr><td>Математика и информатика</td><td>Информатика (Б)</td><td>
+                                        {{ form.d9 }}
+                                        <small>макс. 1</small>
+                                    </td><td>
+                                        {{ form.d10 }}
+                                        <small>макс. 1</small>
+                                    </td><td>≤70</td><td class="table-secondary"></td><td>по выбору</td></tr>
+
+                                    <tr><td>Естественные науки</td><td>Естествознание (Б)</td><td>
+                                        {{ form.d11 }}
+                                        <small>макс. 3</small>
+                                    </td><td>
+                                        {{ form.d12 }}
+                                        <small>макс. 3</small>
+                                    </td><td>≤210</td><td class="table-secondary" colspan="2"></td></tr>
+
+                                    <tr><td colspan="8" class="table-warning lead">Элективные курсы</td></tr>
+                                    
+                                    <tr><td rowspan="4">Русский язык и литература</td><td class="table-success">Зарубежная литература</td><td>
+                                        {{ form.d13 }}
+                                        <small>макс. 2</small>
+                                    </td><td>
+                                        {{ form.d14 }}
+                                        <small>макс. 2</small>
+                                    </td><td>≤140</td><td rowspan="7">отметка</td><td class="table-secondary" rowspan="7" colspan="2"></td></tr>
+
+                                    <tr><td>Диалоги с Чеховым</td><td>
+                                        {{ form.d15 }}
+                                        <small>макс. 1</small>
+                                    </td><td>
+                                        {{ form.d16 }}
+                                        <small>макс. 1</small>
+                                    </td><td>≤70</td></tr>
+
+                                    <tr><td>Современная литература в жанровом аспекте</td><td>
+                                        {{ form.d17 }}
+                                        <small>макс. 1</small>
+                                    </td><td>
+                                        {{ form.d18 }}
+                                        <small>макс. 1</small>
+                                    </td><td>≤70</td></tr>
+
+                                    <tr><td>Риторика</td><td>
+                                        {{ form.d19 }}
+                                        <small>макс. 1</small>
+                                    </td><td>
+                                        {{ form.d20 }}
+                                        <small>макс. 1</small>
+                                    </td><td>≤70</td></tr>
+
+                                    <tr><td rowspan="3">Общественные науки</td><td class="table-success">Сложные аспекты истории России c древнейших времен до конца XIX века</td><td>
+                                        {{ form.d21 }}
+                                        <small>макс. 2</small>
+                                    </td><td>
+                                        {{ form.d22 }}
+                                        <small>макс. 2</small>
+                                    </td><td>≤140</td></tr>
+
+                                    <tr><td>История философии</td><td>
+                                        {{ form.d23 }}
+                                        <small>макс. 2</small>
+                                    </td><td>
+                                        {{ form.d24 }}
+                                        <small>макс. 2</small>
+                                    </td><td>≤140</td></tr>
+
+                                    <tr><td>История мировой культуры</td><td>
+                                        {{ form.d25 }}
+                                        <small>макс. 2</small>
+                                    </td><td>
+                                        {{ form.d26 }}
+                                        <small>макс. 2</small>
+                                    </td><td>≤140</td></tr>
+
+                                    <tr class="table-danger lead"><td colspan="2">Всего минимальная недельная нагрузка</td><td>31</td><td>31</td><td>2170</td><td colspan="3"></td></tr>
+
+                                    <tr class="table-danger lead"><td colspan="2">Всего максимальная недельная нагрузка</td><td>37</td><td>37</td><td>2590</td><td colspan="3"></td></tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table table-bordered text-center align-middle table-sm">
+                                <tbody>
+                                    <tr><td rowspan="2">&nbsp;</td><td colspan="2"><strong>Количество часов</strong></tr>
+
+                                    <tr><td>в неделю (10 класс)</td><td> в неделю (11 класс)</td></tr>
+
+                                    <tr><td colspan="3" class="table-warning lead">Блок 3: внеурочная деятельность (выбрать не более 10 часов в неделю)</td></tr>
+                                    
+                                    <tr><td>Всего часов внеурочной деятельности</td><td>{{ form.d27 }}<small>макс. 10</small></td><td>{{ form.d28 }}<small>макс. 10</small></td></tr>
+
+                                    <tr class="table-danger lead"><td>Всего максимальная недельная нагрузка</td><td>47</td><td>47</td></tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <p class="small mb-4 text-secondary">* ** *** Предметы "Астрономия", "Основы безопасности жизнедеятельности", "Индивидуальный проект"  преподаются с использованием дистанционных форм обучения, обеспечены консультационными часами и не являются аудиторной нагрузкой.</p>
+
+                        <div class="mb-3 form-check">
+                            {{ form.subm }}
+                            <label class="form-check-label">С учебным планом ознакомлен, с условиями его выполнения согласен. Согласен(-а) с политикой конфиденциальности.</label>
+                            <a href="{% url 'terms' %}" target="_blank" class="small text-secondary">Подробнее</a>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Отправить</button>
+                    </form>
+                </article>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

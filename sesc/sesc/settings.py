@@ -16,18 +16,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 ALLOWED_HOSTS = [
     'localhost',
+    '127.0.0.1',
 ]
 
 INSTALLED_APPS = [
-    'main.apps.MainConfig',
-    'core.apps.CoreConfig',
-
+    'django.contrib.staticfiles',
+    'sesc', 
+    'main',
+    'core',
+    'forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
 ]
 
 MIDDLEWARE = [
@@ -45,7 +47,10 @@ ROOT_URLCONF = 'sesc.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            BASE_DIR / 'templates/',
+            BASE_DIR / 'static/',
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -90,6 +95,10 @@ USE_I18N = True
 
 USE_TZ = True
 
-STATIC_URL = 'static/'
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/3.2/howto/static-files/
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [BASE_DIR / "core" / "static"]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

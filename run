@@ -1,0 +1,2 @@
+#!/bin/bash
+python /Users/user/Sites/sesc_registration/sesc/manage.py runserver

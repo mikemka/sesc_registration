@@ -1,0 +1,27 @@
+.navbar {
+    background-image: linear-gradient(
+    275deg,
+    hsl(290deg 81% 94%) 0%,
+    hsl(314deg 94% 94%) 19%,
+    hsl(326deg 100% 95%) 27%,
+    hsl(337deg 100% 95%) 34%,
+    hsl(348deg 100% 95%) 41%,
+    hsl(1deg 100% 96%) 47%,
+    hsl(12deg 100% 95%) 53%,
+    hsl(20deg 100% 95%) 59%,
+    hsl(26deg 100% 95%) 66%,
+    hsl(31deg 100% 96%) 73%,
+    hsl(36deg 100% 96%) 81%,
+    hsl(42deg 89% 96%) 100%
+    ) !important;
+}
+.form-control {
+    background-image: linear-gradient(
+    275deg,
+    hsl(31deg 100% 96%) 0%,
+    hsl(36deg 100% 96%) 50%,
+    hsl(42deg 89% 96%) 100%
+    ) !important;
+}
+.navbar-svg {color: #ffa28696;}
+#table {overflow: scroll !important;}
