@@ -23,15 +23,26 @@ def result(request, pk):
         data_copy = Gum.objects.get(slug=pk)
     except:
         return redirect('10gum')
-    ALL1 = sum((data_copy.d1, data_copy.d3, data_copy.d5, data_copy.d7, data_copy.d9, data_copy.d11, data_copy.d13, data_copy.d15, data_copy.d17, data_copy.d19, data_copy.d21, data_copy.d23, data_copy.d25, 29))
-    ALL2 = sum((data_copy.d2, data_copy.d4, data_copy.d6, data_copy.d8, data_copy.d10, data_copy.d12, data_copy.d14, data_copy.d16, data_copy.d18, data_copy.d20, data_copy.d22, data_copy.d24, data_copy.d26, 28))
+    dt = {
+        "name": data_copy.name,
+        "slug": data_copy.slug,
+        "d1": int(data_copy.d1) * 2,
+        "d2": int(data_copy.d2),
+        "d3": int(data_copy.d3) * 3,
+        "d4": int(data_copy.d4),
+        "d5": int(data_copy.d5),
+        "d6": int(data_copy.d6) * 3,
+        "d7": int(data_copy.d7),
+        "d8": int(data_copy.d8),
+        "d9": int(data_copy.d9),
+        "d10": int(data_copy.d10) * 2,
+        "d11": int(data_copy.d11) * 2
+    }
+    ALL1 = sum((dt['d1'], dt['d2'], dt['d3'], dt['d4'], dt['d5'], dt['d6'], 2, dt['d7'], dt['d8'], dt['d9'], 2, dt['d10'], dt['d11']))
     return render(request, 'forms/result.html', {
-        "form": data_copy,
-        "all1": ALL1,
-        "all2": ALL2,
-        "all": (ALL1 + ALL2) * 35,
-        "vn1": data_copy.d27,
-        "vn2": data_copy.d28
+        "form": dt,
+        "all1": ALL1 + 29,
+        "all": (ALL1 * 2 - 1) * 35 + 1995,
     })
 
 

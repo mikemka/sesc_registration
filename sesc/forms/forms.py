@@ -1,58 +1,53 @@
 from . models import Gum
-from django.forms import ModelForm, TextInput, NumberInput, CheckboxInput, ValidationError
+from django import forms
 from core.generators import generate_id
 
 
-class GumForm(ModelForm):
+class GumForm(forms.ModelForm):
     class Meta:
         model = Gum
-        fields = ('name', 'd1', 'd2', 'd3', 'd4', 'd5', 'd6', 'd7', 'd8', 'd9', 'd10', 'd11', 'd12', 'd13', 'd14', 'd15', 'd16', 'd17', 'd18', 'd19', 'd20', 'd21', 'd22', 'd23', 'd24', 'd25', 'd26', 'd27', 'd28', 'subm', 'slug')
+        fields = ('name', 'subm', 'slug', 'd1', 'd2', 'd3', 'd4', 'd5', 'd6', 'd7', 'd8', 'd9', 'd10', 'd11')
     
         widgets = {
-            "name": TextInput(attrs={"class": 'form-control',}),
-            "d1": NumberInput(attrs={"class": 'form-control', "max": '2'}),
-            "d2": NumberInput(attrs={"class": 'form-control', "max": '2'}),
-            "d3": NumberInput(attrs={"class": 'form-control', "max": '1'}),
-            "d4": NumberInput(attrs={"class": 'form-control', "max": '1'}),
-            "d5": NumberInput(attrs={"class": 'form-control', "max": '2'}),
-            "d6": NumberInput(attrs={"class": 'form-control', "max": '2'}),
-            "d7": NumberInput(attrs={"class": 'form-control', "max": '1'}),
-            "d8": NumberInput(attrs={"class": 'form-control', "max": '1'}),
-            "d9": NumberInput(attrs={"class": 'form-control', "max": '1'}),
-            "d10": NumberInput(attrs={"class": 'form-control', "max": '1'}),
-            "d11": NumberInput(attrs={"class": 'form-control', "max": '3'}),
-            "d12": NumberInput(attrs={"class": 'form-control', "max": '3'}),
-            "d13": NumberInput(attrs={"class": 'form-control', "max": '2'}),
-            "d14": NumberInput(attrs={"class": 'form-control', "max": '2'}),
-            "d15": NumberInput(attrs={"class": 'form-control', "max": '1'}),
-            "d16": NumberInput(attrs={"class": 'form-control', "max": '1'}),
-            "d17": NumberInput(attrs={"class": 'form-control', "max": '1'}),
-            "d18": NumberInput(attrs={"class": 'form-control', "max": '1'}),
-            "d19": NumberInput(attrs={"class": 'form-control', "max": '1'}),
-            "d20": NumberInput(attrs={"class": 'form-control', "max": '1'}),
-            "d21": NumberInput(attrs={"class": 'form-control', "max": '2'}),
-            "d22": NumberInput(attrs={"class": 'form-control', "max": '2'}),
-            "d23": NumberInput(attrs={"class": 'form-control', "max": '2'}),
-            "d24": NumberInput(attrs={"class": 'form-control', "max": '2'}),
-            "d25": NumberInput(attrs={"class": 'form-control', "max": '2'}),
-            "d26": NumberInput(attrs={"class": 'form-control', "max": '2'}),
-            "d27": NumberInput(attrs={"class": 'form-control', "max": '10'}),
-            "d28": NumberInput(attrs={"class": 'form-control', "max": '10'}),
-            "subm": CheckboxInput(attrs={"class": 'form-check-input'}),
-            "slug": TextInput(attrs={"value": generate_id(), "class": 'form-control'})
+            "name": forms.TextInput(attrs={"class": 'form-control',}),
+            "subm": forms.CheckboxInput(attrs={"class": 'form-check-input'}),
+            "slug": forms.TextInput(attrs={"value": generate_id(), "type": 'hidden'}),
+
+            "d1": forms.CheckboxInput(attrs={"class": 'form-check-input'}),
+            "d2": forms.CheckboxInput(attrs={"class": 'form-check-input'}),
+            "d3": forms.CheckboxInput(attrs={"class": 'form-check-input'}),
+            "d4": forms.CheckboxInput(attrs={"class": 'form-check-input'}),
+            "d5": forms.CheckboxInput(attrs={"class": 'form-check-input'}),
+            "d6": forms.CheckboxInput(attrs={"class": 'form-check-input'}),
+            "d7": forms.CheckboxInput(attrs={"class": 'form-check-input'}),
+            "d8": forms.CheckboxInput(attrs={"class": 'form-check-input'}),
+            "d9": forms.CheckboxInput(attrs={"class": 'form-check-input'}),
+            "d10": forms.CheckboxInput(attrs={"class": 'form-check-input'}),
+            "d11": forms.CheckboxInput(attrs={"class": 'form-check-input'}),
         }
     
     def clean_name(self):
         name = self.cleaned_data['name']
         if len(name) >= 255:
-            raise ValidationError(f'Длина текста ({len(name)}) превышает допустимые 255 символов!')
+            raise forms.ValidationError(f'Длина текста ({len(name)}) превышает допустимые 255 символов!')
         return name
     
     def clean(self):
         self.cleaned_data['slug'] = generate_id()
-        ALL1 = sum((self.cleaned_data['d1'], self.cleaned_data['d3'], self.cleaned_data['d5'], self.cleaned_data['d7'], self.cleaned_data['d9'], self.cleaned_data['d11'], self.cleaned_data['d13'], self.cleaned_data['d15'], self.cleaned_data['d17'], self.cleaned_data['d19'], self.cleaned_data['d21'], self.cleaned_data['d23'], self.cleaned_data['d25']))
-
-        ALL2 = sum((self.cleaned_data['d2'], self.cleaned_data['d4'], self.cleaned_data['d6'], self.cleaned_data['d8'], self.cleaned_data['d10'], self.cleaned_data['d12'], self.cleaned_data['d14'], self.cleaned_data['d16'], self.cleaned_data['d18'], self.cleaned_data['d20'], self.cleaned_data['d22'], self.cleaned_data['d24'], self.cleaned_data['d26']))
-
-        if not (2 <= ALL1 <= 8 and 3 <= ALL2 <= 9):
-            raise ValidationError('Слишком много или слишком мало часов недельной нагрузки!')
+        ALL = sum((
+            int(self.cleaned_data['d1']) * 2,
+            int(self.cleaned_data['d2']),
+            int(self.cleaned_data['d3']) * 3,
+            int(self.cleaned_data['d4']),
+            int(self.cleaned_data['d5']),
+            int(self.cleaned_data['d6']) * 3,
+            2,
+            int(self.cleaned_data['d7']),
+            int(self.cleaned_data['d8']),
+            int(self.cleaned_data['d9']),
+            2,
+            int(self.cleaned_data['d10']) * 2,
+            int(self.cleaned_data['d11']) * 2,
+        ))
+        if ALL > 8:
+            raise forms.ValidationError('Слишком много часов недельной нагрузки!')

@@ -9,23 +9,15 @@
                 <article class="container pb-3">
                     <p class="text-end mb-0">Принято Ученым советом СУНЦ</p>
                     <p class="text-end lh-sm">протокол № 10 от 16 декабря 2021 года</p>
-                    <p class="text-center mb-0 lead">Учебный план для 10 классов.</p>
+
+                    <p class="text-center mb-0 lead">Учебный план для 10-11 класса.</p>
                     <p class="text-center lh-sm mb-0">Направление подготовки: Гуманитарные науки. Профиль подготовки: Гуманитарный.</p>
                     <p class="text-center lh-sm">Углубленные предметы: русский язык, литература, иностранный язык, история.</p>
                     
-                    {% if error %}
-                    <div class="card text-white bg-danger mb-3">
-                        <div class="card-body">
-                            <p class="card-text">{{ error }}</p>
-                        </div>
-                    </div>
-                    {% endif %}
+                    {% if error %}<div class="alert alert-danger mb-3">{{ error }}</div>{% endif %}
                     
                     <form method="post">
-                        <div style="display: none;">
-                            <!-- Временный ID; Не влияет на окончательный ID -->
-                            {{ form.slug }}
-                        </div>
+                        {{ form.slug }} <!-- ID сессии -->
                         {% csrf_token %}
                         <div class="mb-4">
                             <p class="mb-0">Обучающийся</p>
@@ -44,27 +36,27 @@
 
                                     <tr><td colspan="8" class="table-warning lead">Блок 1: обязательные учебные предметы</td></tr>
 
-                                    <tr><td rowspan="2">Русский язык и литература</td><td class="table-success">Русский язык (У)</td><td>3</td><td>3</td><td>210</td><td rowspan="11">отметка</td><td>экзамен</td><td>ЕГЭ</td></tr>
+                                    <tr><td rowspan="2">Русский язык и литература</td><td class="table-success">Русский язык (У)</td><td colspan="2">3</td><td>210</td><td rowspan="11">отметка</td><td>экзамен</td><td>ЕГЭ</td></tr>
 
-                                    <tr><td class="table-success">Литература (У)</td><td>5</td><td>5</td><td>350</td><td>экзамен</td><td>по выбору</td></tr>
+                                    <tr><td class="table-success">Литература (У)</td><td colspan="2">5</td><td>350</td><td>экзамен</td><td>по выбору</td></tr>
 
-                                    <tr><td>Родной язык и родная литература</td><td>Родная русская литература (Б)</td><td>1</td><td>1</td><td>70</td><td colspan="2" class="table-secondary"></td></tr>
+                                    <tr><td>Родной язык и родная литература</td><td>Родная русская литература (Б)</td><td colspan="2">1</td><td>70</td><td colspan="2" class="table-secondary"></td></tr>
 
-                                    <tr><td>Иностранные языки</td><td class="table-success">Иностранный язык (У)</td><td>6</td><td>6</td><td>420</td><td>диф. зачет</td><td rowspan="2">по выбору</td></tr>
+                                    <tr><td>Иностранные языки</td><td class="table-success">Иностранный язык (У)</td><td colspan="2">6</td><td>420</td><td>диф. зачет</td><td rowspan="2">по выбору</td></tr>
 
-                                    <tr><td rowspan="2">Общественные науки</td><td class="table-success">История (У)</td><td>4</td><td>4</td><td>280</td><td>экзамен</td></tr>
+                                    <tr><td rowspan="2">Общественные науки</td><td class="table-success">История (У)</td><td colspan="2">4</td><td>280</td><td>экзамен</td></tr>
 
-                                    <tr><td>МХК (Б)</td><td>1</td><td>1</td><td>70</td><td colspan="2" class="table-secondary"></td></tr>
+                                    <tr><td>МХК (Б)</td><td colspan="2">1</td><td>70</td><td colspan="2" class="table-secondary"></td></tr>
 
-                                    <tr><td>Математика и информатика</td><td>Математика: алгебра и начала математического анализа, геометрия (Б)</td><td>4</td><td>4</td><td>280</td><td class="table-secondary"></td><td>ЕГЭ</td></tr>
+                                    <tr><td>Математика и информатика</td><td>Математика: алгебра и начала математического анализа, геометрия (Б)</td><td colspan="2">4</td><td>280</td><td class="table-secondary"></td><td>ЕГЭ</td></tr>
 
                                     <tr><td>Естественные науки</td><td>Астрономия (Б)*</td><td>1</td><td>0</td><td>35</td><td colspan="2" rowspan="4" class="table-secondary"></td></tr>
 
-                                    <tr><td rowspan="2">Физическая культура, экология и ОБЖ</td><td>Физическая культура (Б)</td><td>2</td><td>2</td><td>140</td></tr>
+                                    <tr><td rowspan="2">Физическая культура, экология и ОБЖ</td><td>Физическая культура (Б)</td><td colspan="2">2</td><td>140</td></tr>
 
-                                    <tr><td>Основы безопасности жизнедеятельности (Б)**</td><td>1</td><td>1</td><td>70</td></tr>
+                                    <tr><td>Основы безопасности жизнедеятельности (Б)**</td><td colspan="2">1</td><td>70</td></tr>
 
-                                    <tr><td colspan="2">Индивидуальный проект ***</td><td>1</td><td>1</td><td>70</td></tr>
+                                    <tr><td colspan="2">Индивидуальный проект ***</td><td colspan="2">1</td><td>70</td></tr>
 
                                     <tr class="table-danger"><td colspan="2">Всего часов Блок 1</td><td>29</td><td>28</td><td>1995</td><td colspan="3"></td></tr>
 
@@ -82,130 +74,78 @@
 
                                     <tr><td colspan="8" class="table-warning lead">Учебные предметы по выбору</td></tr>
 
-                                    <tr><td>Иностранные языки</td><td>Второй иностранный язык (Б)</td><td>
+                                    <tr><td>Иностранные языки</td><td>Второй иностранный язык (Б)</td><td colspan="2">
                                         {{ form.d1 }}
-                                        <small>макс. 2</small>
-                                    </td><td>
-                                        {{ form.d2 }}
-                                        <small>макс. 2</small>
+                                        2 ч.
                                     </td><td>≤ 140</td><td rowspan="6">отметка</td><td>диф. зачет</td><td rowspan="3">по выбору</td></tr>
 
-                                    <tr><td rowspan="3">Общественные науки</td><td>География (Б)</td><td>
-                                        {{ form.d3 }}
-                                        <small>макс. 1</small>
-                                    </td><td>
-                                        {{ form.d4 }}
-                                        <small>макс. 1</small>
+                                    <tr><td rowspan="3">Общественные науки</td><td>География (Б)</td><td colspan="2">
+                                        {{ form.d2 }}
+                                        1 ч.
                                     </td><td>≤70</td><td class="table-secondary"></td></tr>
 
-                                    <tr><td>Обществознание (Б)</td><td>
-                                        {{ form.d5 }}
-                                        <small>макс.2</small>
-                                    </td><td>
-                                        {{ form.d6 }}
-                                        <small>макс. 2</small>
+                                    <tr><td>Обществознание (Б)</td><td colspan="2">
+                                        {{ form.d3 }}
+                                        3 ч.
                                     </td><td>≤140</td><td>диф. зачет</td></tr>
 
-                                    <tr><td>Теория познания (Б)</td><td>
-                                        {{ form.d7 }}
-                                        <small>макс. 1</small>
-                                    </td><td>
-                                        {{ form.d8 }}
-                                        <small>макс. 1</small>
+                                    <tr><td>Теория познания (Б)</td><td colspan="2">
+                                        {{ form.d4 }}
+                                        1 ч.
                                     </td><td>≤70</td><td colspan="2" class="table-secondary"></td></tr>
 
-                                    <tr><td>Математика и информатика</td><td>Информатика (Б)</td><td>
-                                        {{ form.d9 }}
-                                        <small>макс. 1</small>
-                                    </td><td>
-                                        {{ form.d10 }}
-                                        <small>макс. 1</small>
+                                    <tr><td>Математика и информатика</td><td>Информатика (Б)</td><td colspan="2">
+                                        {{ form.d5 }}
+                                        1 ч.
                                     </td><td>≤70</td><td class="table-secondary"></td><td>по выбору</td></tr>
 
-                                    <tr><td>Естественные науки</td><td>Естествознание (Б)</td><td>
-                                        {{ form.d11 }}
-                                        <small>макс. 3</small>
-                                    </td><td>
-                                        {{ form.d12 }}
-                                        <small>макс. 3</small>
+                                    <tr><td>Естественные науки</td><td>Естествознание (Б)</td><td colspan="2">
+                                        {{ form.d6 }}
+                                        3 ч.
                                     </td><td>≤210</td><td class="table-secondary" colspan="2"></td></tr>
 
                                     <tr><td colspan="8" class="table-warning lead">Элективные курсы</td></tr>
                                     
-                                    <tr><td rowspan="4">Русский язык и литература</td><td class="table-success">Зарубежная литература</td><td>
-                                        {{ form.d13 }}
-                                        <small>макс. 2</small>
-                                    </td><td>
-                                        {{ form.d14 }}
-                                        <small>макс. 2</small>
+                                    <tr><td rowspan="4">Русский язык и литература</td><td class="table-success">Зарубежная литература</td><td colspan="2">
+                                        <input type="checkbox" class="form-check-input" checked disabled>
+                                        2 ч.
                                     </td><td>≤140</td><td rowspan="7">отметка</td><td class="table-secondary" rowspan="7" colspan="2"></td></tr>
 
-                                    <tr><td>Диалоги с Чеховым</td><td>
-                                        {{ form.d15 }}
-                                        <small>макс. 1</small>
-                                    </td><td>
-                                        {{ form.d16 }}
-                                        <small>макс. 1</small>
+                                    <tr><td>Диалоги с Чеховым</td><td colspan="2">
+                                        {{ form.d7 }}
+                                        1 ч.
                                     </td><td>≤70</td></tr>
 
-                                    <tr><td>Современная литература в жанровом аспекте</td><td>
-                                        {{ form.d17 }}
-                                        <small>макс. 1</small>
-                                    </td><td>
-                                        {{ form.d18 }}
-                                        <small>макс. 1</small>
+                                    <tr><td>Современная литература в жанровом аспекте</td><td colspan="2">
+                                        {{ form.d8 }}
+                                        1 ч.
                                     </td><td>≤70</td></tr>
 
-                                    <tr><td>Риторика</td><td>
-                                        {{ form.d19 }}
-                                        <small>макс. 1</small>
-                                    </td><td>
-                                        {{ form.d20 }}
-                                        <small>макс. 1</small>
+                                    <tr><td>Риторика</td><td colspan="2">
+                                        {{ form.d9 }}
+                                        1 ч.
                                     </td><td>≤70</td></tr>
 
-                                    <tr><td rowspan="3">Общественные науки</td><td class="table-success">Сложные аспекты истории России c древнейших времен до конца XIX века</td><td>
-                                        {{ form.d21 }}
-                                        <small>макс. 2</small>
-                                    </td><td>
-                                        {{ form.d22 }}
-                                        <small>макс. 2</small>
+                                    <tr><td rowspan="3">Общественные науки</td><td class="table-success">Сложные аспекты истории России c древнейших времен до конца XIX века</td><td colspan="2">
+                                        <input type="checkbox" class="form-check-input" disabled checked>
+                                        2 ч.
                                     </td><td>≤140</td></tr>
 
-                                    <tr><td>История философии</td><td>
-                                        {{ form.d23 }}
-                                        <small>макс. 2</small>
-                                    </td><td>
-                                        {{ form.d24 }}
-                                        <small>макс. 2</small>
+                                    <tr><td>История философии</td><td colspan="2">
+                                        {{ form.d10 }}
+                                        2 ч.
                                     </td><td>≤140</td></tr>
 
-                                    <tr><td>История мировой культуры</td><td>
-                                        {{ form.d25 }}
-                                        <small>макс. 2</small>
-                                    </td><td>
-                                        {{ form.d26 }}
-                                        <small>макс. 2</small>
+                                    <tr><td>История мировой культуры</td><td colspan="2">
+                                        {{ form.d11 }}
+                                        2 ч.
                                     </td><td>≤140</td></tr>
 
-                                    <tr class="table-danger lead"><td colspan="2">Всего минимальная недельная нагрузка</td><td>31</td><td>31</td><td>2170</td><td colspan="3"></td></tr>
+                                    <tr class="table-danger lead"><td colspan="2">Всего минимальная недельная нагрузка</td><td colspan="2">31</td><td>2170</td><td colspan="3"></td></tr>
 
-                                    <tr class="table-danger lead"><td colspan="2">Всего максимальная недельная нагрузка</td><td>37</td><td>37</td><td>2590</td><td colspan="3"></td></tr>
-                                </tbody>
-                            </table>
+                                    <tr class="table-primary lead" id="ext"><td colspan="2" id="ext-info">Текущая недельная нагрузка</td><td id="ext1">33</td><td id="ext2">32</td><td id="ext3">2275</td><td colspan="3"></td></tr>
 
-                            <table class="table table-bordered text-center align-middle table-sm">
-                                <tbody>
-                                    <tr><td rowspan="2">&nbsp;</td><td colspan="2"><strong>Количество часов</strong></tr>
-
-                                    <tr><td>в неделю (10 класс)</td><td> в неделю (11 класс)</td></tr>
-
-                                    <tr><td colspan="3" class="table-warning lead">Блок 3: внеурочная деятельность (выбрать не более 10 часов в неделю)</td></tr>
-                                    
-                                    <tr><td>Всего часов внеурочной деятельности</td><td>{{ form.d27 }}<small>макс. 10</small></td><td>{{ form.d28 }}<small>макс. 10</small></td></tr>
-
-                                    <tr class="table-danger lead"><td>Всего максимальная недельная нагрузка</td><td>47</td><td>47</td></tr>
-
+                                    <tr class="table-danger lead"><td colspan="2">Всего максимальная недельная нагрузка</td><td colspan="2">37</td><td>2590</td><td colspan="3"></td></tr>
                                 </tbody>
                             </table>
                         </div>
@@ -218,11 +158,52 @@
                             <a href="{% url 'terms' %}" target="_blank" class="small text-secondary">Подробнее</a>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary">Отправить</button>
+                        <button type="submit" class="btn btn-primary" id="sbm-btn">Отправить</button>
                     </form>
                 </article>
             </div>
         </div>
     </div>
 </main>
+
+
+<script>
+    // JS <3
+    function f() {
+        let d1 = Number(document.getElementById('id_d1').checked) * 2;
+        let d2 = Number(document.getElementById('id_d2').checked);
+        let d3 = Number(document.getElementById('id_d3').checked) * 3;
+        let d4 = Number(document.getElementById('id_d4').checked);
+        let d5 = Number(document.getElementById('id_d5').checked);
+        let d6 = Number(document.getElementById('id_d6').checked) * 3;
+        let d7 = Number(document.getElementById('id_d7').checked);
+        let d8 = Number(document.getElementById('id_d8').checked);
+        let d9 = Number(document.getElementById('id_d9').checked);
+        let d10 = Number(document.getElementById('id_d10').checked) * 2;
+        let d11 = Number(document.getElementById('id_d11').checked) * 2;
+        let ext = d1 + d2 + d3 + d4 + d5 + d6 + d7 + d8 + d9 + d10 + d11 + 32;
+        document.getElementById("ext1").textContent = ext + 1; document.getElementById("ext2").textContent = ext; document.getElementById("ext3").textContent = (ext + ext + 1) * 35;
+        if ((ext < 31) || (ext + 1 > 37)) {
+            document.getElementById("ext").className = "table-dark lead";
+            document.getElementById("sbm-btn").className = "btn btn-primary disabled";
+            document.getElementById("ext-info").textContent = "Слишком много часов недельной нагрузки!";
+        } else {
+            document.getElementById("ext").className = "table-primary lead";
+            document.getElementById("sbm-btn").className = "btn btn-primary";
+            document.getElementById("ext-info").textContent = "Текущая недельная нагрузка";
+        }
+    }
+    document.getElementById('id_d1').onclick = function () {f();}
+    document.getElementById('id_d2').onclick = function () {f();}
+    document.getElementById('id_d3').onclick = function () {f();}
+    document.getElementById('id_d4').onclick = function () {f();}
+    document.getElementById('id_d5').onclick = function () {f();}
+    document.getElementById('id_d6').onclick = function () {f();}
+    document.getElementById('id_d7').onclick = function () {f();}
+    document.getElementById('id_d8').onclick = function () {f();}
+    document.getElementById('id_d9').onclick = function () {f();}
+    document.getElementById('id_d10').onclick = function () {f();}
+    document.getElementById('id_d11').onclick = function () {f();}
+</script>
+
 {% endblock %}
