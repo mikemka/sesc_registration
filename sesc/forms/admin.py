@@ -1,17 +1,31 @@
 from django.contrib import admin
-from . models import Gum
+from forms.models import Gum, Sgum
 from django.utils.safestring import mark_safe
 
 
-class GumAdmin(admin.ModelAdmin):
-    list_display = ('name', 'get_url')
-    fields = ('name', 'subm', 'get_url')
-    readonly_fields = ('get_url',)
+class Template(admin.ModelAdmin):
+    list_display = ('name', 'attached', 'get_url')
+    list_editable = ('attached',)
+    fields = ('name', 'get_url', 'subm', 'attached', )
+    readonly_fields = ('get_url', 'subm', 'name')
+    
+    class Meta:
+        abstract = True
 
+
+class GumAdmin(Template, admin.ModelAdmin):
     def get_url(self, object):
-        return mark_safe(f"<a href='../../../../../../../../1/{object.slug}/'>Просмотреть {object.slug}</a>")
+        return mark_safe(f"<a href='{'../' * 10}1/{object.slug}/'>{object.slug}</a>")
+    
+    get_url.short_description = 'ID'
+
+
+class SgumAdmin(Template, admin.ModelAdmin):
+    def get_url(self, object):
+        return mark_safe(f"<a href='{'../' * 10}2/{object.slug}/'>{object.slug}</a>")
     
     get_url.short_description = 'ID'
 
 
 admin.site.register(Gum, GumAdmin)
+admin.site.register(Sgum, SgumAdmin)

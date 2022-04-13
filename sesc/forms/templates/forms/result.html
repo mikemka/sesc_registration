@@ -1,6 +1,8 @@
 {% extends 'core/base.html' %}
 
-{% block title %}Учебный план для 10 классов.{% endblock %}
+{% load static %}
+
+{% block title %}Учебный план для 10-11 классов.{% endblock %}
 
 {% block disable_bootstrap %}{% endblock %}
 
@@ -77,41 +79,41 @@ table td {border: 1px solid rgb(133, 133, 133);}
     
                 <tr><td colspan="8" class="table-warning">Учебные предметы по выбору</td></tr>
     
-                <tr><td>Иностранные языки</td><td>Второй иностранный язык (Б)</td><td>
+                <tr><td>Иностранные языки</td><td>Второй иностранный язык (Б)</td><td id="d1">
                     {{ form.d1 }}
                 </td><td>
                     {{ form.d1 }}
-                </td><td>≤140</td><td rowspan="6">отметка</td><td>диф. зачет</td><td rowspan="3">по выбору</td></tr>
+                </td><td id="d1_res"></td><td rowspan="6">отметка</td><td>диф. зачет</td><td rowspan="3">по выбору</td></tr>
     
-                <tr><td rowspan="3">Общественные науки</td><td>География (Б)</td><td>
+                <tr><td rowspan="3">Общественные науки</td><td>География (Б)</td><td id="d2">
                     {{ form.d2 }}
                 </td><td>
                     {{ form.d2 }}
-                </td><td>≤70</td><td class="table-secondary">нет</td></tr>
+                </td><td id="d2_res"></td><td class="table-secondary">нет</td></tr>
     
-                <tr><td>Обществознание (Б)</td><td>
+                <tr><td>Обществознание (Б)</td><td id="d3">
                     {{ form.d3 }}
                 </td><td>
                     {{ form.d3 }}
-                </td><td>≤140</td><td>диф. зачет</td></tr>
+                </td><td id="d3_res"></td><td>диф. зачет</td></tr>
     
-                <tr><td>Теория познания (Б)</td><td>
+                <tr><td>Теория познания (Б)</td><td id="d4">
                     {{ form.d4 }}
                 </td><td>
                     {{ form.d4 }}
-                </td><td>≤70</td><td colspan="2" class="table-secondary">нет</td></tr>
+                </td><td id="d4_res"></td><td colspan="2" class="table-secondary">нет</td></tr>
     
-                <tr><td>Математика и информатика</td><td>Информатика (Б)</td><td>
+                <tr><td>Математика и информатика</td><td>Информатика (Б)</td><td id="d5">
                     {{ form.d5 }}
                 </td><td>
                     {{ form.d5 }}
-                </td><td>≤70</td><td class="table-secondary">нет</td><td>по выбору</td></tr>
+                </td><td id="d5_res"></td><td class="table-secondary">нет</td><td>по выбору</td></tr>
     
-                <tr><td>Естественные науки</td><td>Естествознание (Б)</td><td>
+                <tr><td>Естественные науки</td><td>Естествознание (Б)</td><td id="d6">
                     {{ form.d6 }}
                 </td><td>
                     {{ form.d6 }}
-                </td><td>≤210</td><td class="table-secondary" colspan="2">нет</td></tr>
+                </td><td id="d6_res"></td><td class="table-secondary" colspan="2">нет</td></tr>
     
                 <tr><td colspan="8" class="table-warning">Элективные курсы</td></tr>
                 
@@ -119,43 +121,43 @@ table td {border: 1px solid rgb(133, 133, 133);}
                     2
                 </td><td>
                     2
-                </td><td>≤140</td><td rowspan="7">отметка</td><td class="table-secondary" rowspan="7" colspan="2">нет</td></tr>
+                </td><td>140</td><td rowspan="7">отметка</td><td class="table-secondary" rowspan="7" colspan="2">нет</td></tr>
     
-                <tr><td>Диалоги с Чеховым</td><td>
+                <tr><td>Диалоги с Чеховым</td><td id="d7">
                     {{ form.d7 }}
                 </td><td>
                     {{ form.d7 }}
-                </td><td>≤70</td></tr>
+                </td><td id="d7_res"></td></tr>
     
-                <tr><td>Современная литература в жанровом аспекте</td><td>
+                <tr><td>Современная литература в жанровом аспекте</td><td id="d8">
                     {{ form.d8 }}
                 </td><td>
                     {{ form.d8 }}
-                </td><td>≤70</td></tr>
+                </td><td id="d8_res"></td></tr>
     
-                <tr><td>Риторика</td><td>
+                <tr><td>Риторика</td><td id="d9">
                     {{ form.d9 }}
                 </td><td>
                     {{ form.d9 }}
-                </td><td>≤70</td></tr>
+                </td><td id="d9_res"></td></tr>
     
                 <tr><td rowspan="3">Общественные науки</td><td class="table-success">Сложные аспекты истории России c древнейших времен до конца XIX века</td><td>
                     2
                 </td><td>
                     2
-                </td><td>≤140</td></tr>
+                </td><td>140</td></tr>
     
-                <tr><td>История философии</td><td>
+                <tr><td>История философии</td><td id="d10">
                     {{ form.d10 }}
                 </td><td>
                     {{ form.d10 }}
-                </td><td>≤140</td></tr>
+                </td><td id="d10_res"></td></tr>
     
-                <tr><td>История мировой культуры</td><td>
+                <tr><td>История мировой культуры</td><td id="d11">
                     {{ form.d11 }}
                 </td><td>
                     {{ form.d11 }}
-                </td><td>≤140</td></tr>
+                </td><td id="d11_res"></td></tr>
     
                 <tr class="table-danger"><td colspan="2">Всего часов недельная нагрузка</td><td>{{ all1 }}</td><td>{{ all1|add:-1 }}</td><td>{{ all }}</td><td colspan="3"></td></tr>
     
@@ -180,5 +182,5 @@ table td {border: 1px solid rgb(133, 133, 133);}
     </article>
 </div>
 
-<script>window.print();</script>
+<script src="{% static 'core/js/result.js' %}"></script>
 {% endblock %}

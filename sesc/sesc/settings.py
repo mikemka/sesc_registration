@@ -9,6 +9,8 @@ if os.path.exists(dotenv_path := os.path.join(os.path.dirname(__file__), '.env')
 
 DEBUG = os.environ.setdefault('DEBUG', False)
 
+SITE_URL = os.environ.setdefault('SITE_URL', 'http://127.0.0.1:8000')
+
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # Project config
