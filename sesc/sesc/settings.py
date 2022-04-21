@@ -74,6 +74,17 @@ DATABASES = {
     }
 }
 
+# DATABASES = {
+    # 'default': {
+        # 'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': 'autoTechHelpbot$default',
+        # 'USER': 'autoTechHelpbot',
+        # 'PASSWORD': '|zYs4W2Z}Luu',
+        # 'HOST': 'autoTechHelpbot.mysql.pythonanywhere-services.com',
+        # 'PORT': '3306',
+    # }
+# }
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',

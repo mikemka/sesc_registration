@@ -18,8 +18,9 @@ urlpatterns = [
     path('2/<slug:pk>/', forms__views.result2),
     path('2/', forms__views.form2, name='10sgum'),
 
-    path('<int:pk>/', forms__views.not_ready),
-    
+    path('3/<slug:pk>/', forms__views.result3),
+    path('3/', forms__views.form3, name='10socek'),
+
     path('export/', core__views.export, name='export'),
     path('', main__views.home, name='home'),
 ]

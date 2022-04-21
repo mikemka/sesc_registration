@@ -1,5 +1,4 @@
 from django.http import FileResponse
-from django.shortcuts import render
 from tempfile import NamedTemporaryFile
 from string import ascii_uppercase as EN_ALPH
 from openpyxl.styles import Font
@@ -36,6 +35,16 @@ SUBJ_NAMES = {
         'd10': 'Социология',
         'd11': 'История философии',
     },
+    "10 соцэк": {
+        'd1': 'Теория познания (Б)',
+        'd2': 'МХК (Б)',
+        'd3': 'География (Б)',
+        'd4': 'Информатика (Б)',
+        'd5': 'Естествознание (Б)',
+        'd6': 'Экономическая география',
+        'd7': 'История философии',
+        'd8': 'Сложные математические задачи',
+    },
 }
 
 
@@ -68,6 +77,16 @@ def export(request):
             'd10': models.Sgum.objects.filter(d10=True, attached=True),
             'd11': models.Sgum.objects.filter(d11=True, attached=True),
         },
+        '10 соцэк': {
+            'd1': models.SocEk.objects.filter(d1=True, attached=True),
+            'd2': models.SocEk.objects.filter(d2=True, attached=True),
+            'd3': models.SocEk.objects.filter(d3=True, attached=True),
+            'd4': models.SocEk.objects.filter(d4=True, attached=True),
+            'd5': models.SocEk.objects.filter(d5=True, attached=True),
+            'd6': models.SocEk.objects.filter(d6=True, attached=True),
+            'd7': models.SocEk.objects.filter(d7=True, attached=True),
+            'd8': models.SocEk.objects.filter(d8=True, attached=True),
+        }
     }
 
     for form_ind, form in enumerate(INFO):
