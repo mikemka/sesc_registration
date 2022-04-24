@@ -92,9 +92,9 @@ def export(request):
     for form_ind, form in enumerate(INFO):
         sheet = BOOK.create_sheet(index=0, title=form)
         for subj_ind, subj in enumerate(INFO[form]):
-            sheet.cell(1, subj_ind + 1, SUBJ_NAMES[form][subj]).font = HEADER_FONT  # Название предмета & шрифт
-            sheet.cell(2, subj_ind + 1, len(INFO[form][subj])).font = HEADER_FONT  # Количество предметов
-            sheet.column_dimensions[EN_ALPH[subj_ind % len(EN_ALPH)]].width = 45  # Ширина столбца
+            sheet.cell(1, subj_ind + 1, SUBJ_NAMES[form][subj]).font = HEADER_FONT
+            sheet.cell(2, subj_ind + 1, len(INFO[form][subj])).font = HEADER_FONT
+            sheet.column_dimensions[EN_ALPH[subj_ind % len(EN_ALPH)]].width = 45
             for stud_ind in range(len(INFO[form][subj])):  #* ФИО обучающихся & URL
                 hyperlink = f'{SITE_URL}/{form_ind + 1}/{INFO[form][subj][stud_ind].slug}'
                 sheet.cell(stud_ind + 3, subj_ind + 1, f'{INFO[form][subj][stud_ind]}')
