@@ -1,8 +1,8 @@
-from django.contrib import admin
-from django.urls import path, include
-from django.conf.urls.static import static
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf import settings
+from django.conf.urls.static import static
+from django.contrib import admin
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.urls import path
 from main import views as main__views
 from forms import views as forms__views
 from core import views as core__views
@@ -20,6 +20,9 @@ urlpatterns = [
 
     path('3/<slug:pk>/', forms__views.result3),
     path('3/', forms__views.form3, name='10socek'),
+
+    path('4/<slug:pk>/', forms__views.result4),
+    path('4/', forms__views.form4, name='10matinf'),
 
     path('export/', core__views.export, name='export'),
     path('', main__views.home, name='home'),

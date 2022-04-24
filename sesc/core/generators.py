@@ -1,10 +1,8 @@
 import time
 from random import choice
-from string import ascii_lowercase as LETTERS_LOWER, digits as DIGITS, ascii_uppercase as LETTERS_UPPER
-
+from string import ascii_lowercase as LETTERS_LOWER, digits as DIGITS
 
 STEP = 5
-
 
 def generate_id():
     r = hex(int(str(time.time() // 1)[-3::-1]))[3:] + choice(LETTERS_LOWER + DIGITS) + choice(LETTERS_LOWER + DIGITS)

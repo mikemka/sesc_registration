@@ -1,8 +1,8 @@
 {% extends 'forms/includes/result_template.html' %}
 
 {% block education_profile %}
-<p>Направление подготовки: Гуманитарные науки. Профиль подготовки: <b>Социально-экономический</b>.</p>
-<p>Углубленные предметы: иностранный язык, математика, обществознание (право, экономика).</p>
+<p>Направление подготовки: Точные науки. Профиль подготовки: <b>Математико-информационный</b>.</p>
+<p>Углубленные предметы: иностранный язык, математика, информатика.</p>
 {% endblock %}
 
 {% block tbody %}
@@ -18,13 +18,13 @@
     <td>в неделю (10 класс)</td>
     <td>в неделю (11 класс)</td>
     <td>за два года (70 учебных недель)</td>
-    <td>Текущая аттетсатция</td>
+    <td>Текущая аттетсация</td>
     <td>Промежуточная аттестация: зимняя и летняя сессии</td>
     <td>Итоговая аттестация</td>
 </tr>
 
 <tr>
-    <td colspan="8" class="table-warning lead"><b>Блок 1: обязательные учебные предметы</b></td>
+    <td colspan="8" class="table-warning lead">Блок 1: обязательные учебные предметы</td>
 </tr>
 
 <tr>
@@ -33,8 +33,8 @@
     <td>1</td>
     <td>1</td>
     <td>70</td>
-    <td rowspan="13">отметка</td>
-    <td>экзамен</td>
+    <td rowspan="11">отметка</td>
+    <td class="table-secondary" rowspan="3"></td>
     <td>ЕГЭ</td>
 </tr>
 
@@ -43,7 +43,6 @@
     <td>3</td>
     <td>3</td>
     <td>210</td>
-    <td class="table-secondary">нет</td>
     <td>по выбору</td>
 </tr>
 
@@ -53,7 +52,7 @@
     <td>1</td>
     <td>1</td>
     <td>70</td>
-    <td colspan="2" class="table-secondary">нет</td>
+    <td class="table-secondary"></td>
 </tr>
 
 <tr>
@@ -62,49 +61,35 @@
     <td>6</td>
     <td>6</td>
     <td>420</td>
-    <td>экзамен</td>
-    <td rowspan="3">по выбору</td>
+    <td>диф. зачет</td>
+    <td rowspan="2">по выбору</td>
 </tr>
 
 <tr>
-    <td rowspan="4">Общественные науки</td>
+    <td>Общественные науки</td>
     <td>История (Б)</td>
     <td>2</td>
     <td>2</td>
     <td>140</td>
-    <td class="table-secondary">нет</td>
+    <td class="table-secondary"></td>
 </tr>
 
 <tr>
-    <td>Обществознание (Б)</td>
-    <td>2</td>
-    <td>2</td>
-    <td>140</td>
-    <td rowspan="4">экзамен</td>
-</tr>
-
-<tr>
-    <td class="table-success">Право (У)</td>
-    <td>2</td>
-    <td>2</td>
-    <td>140</td>
-    <td class="table-secondary" rowspan="2">нет</td>
-</tr>
-
-<tr>
-    <td class="table-success">Экономика (У)</td>
-    <td>2</td>
-    <td>2</td>
-    <td>140</td>
-</tr>
-
-<tr>
-    <td>Математика и информатика</td>
-    <td>Математика: алгебра и начала математического анализа, геометрия (Б)</td>
+    <td rowspan="2">Математика и информатика</td>
+    <td class="table-success">Математика: алгебра и начала математического анализа, геометрия (У)</td>
     <td>6</td>
     <td>6</td>
     <td>420</td>
+    <td rowspan="2">экзамен</td>
     <td>ЕГЭ</td>
+</tr>
+
+<tr>
+    <td class="table-success">Информатика (У)</td>
+    <td>4</td>
+    <td>4</td>
+    <td>280</td>
+    <td>по выбору</td>
 </tr>
 
 <tr>
@@ -113,7 +98,7 @@
     <td>1</td>
     <td>0</td>
     <td>35</td>
-    <td colspan="2" rowspan="4" class="table-secondary">нет</td>
+    <td colspan="2" rowspan="4" class="table-secondary"></td>
 </tr>
 
 <tr>
@@ -140,57 +125,74 @@
 
 <tr class="table-danger">
     <td colspan="2">Всего часов Блок 1</td>
-    <td>30</td>
-    <td>29</td>
-    <td>1995</td>
+    <td>28</td>
+    <td>27</td>
+    <td>1855</td>
     <td colspan="3"></td>
 </tr>
 
-<tr><td colspan="8" class="table-warning"><strong>Блок 2: часть, формируемая участниками образовательных отношений</strong></td></tr>
-
-<tr><td colspan="8" class="table-warning">Учебные предметы по выбору</td></tr>
-
 <tr>
-    <td rowspan="3">Общественные науки</td>
-    <td>Теория познания (Б)</td>
-    <td id="d1">{{ form.d1 }}</td>
-    <td>{{ form.d1 }}</td>
-    <td id="d1_res"></td>
-    <td rowspan="5">отметка</td>
-    <td class="table-secondary" colspan="2" rowspan="2">нет</td>
+    <td colspan="8" class="table-warning lead">Блок 2: часть, формируемая участниками образовательных отношений</td>
 </tr>
 
 <tr>
-    <td>МХК (Б)</td>
+    <td colspan="8" class="table-warning lead">Учебные предметы по выбору</td>
+</tr>
+
+<tr>
+    <td rowspan="4">Общественные науки</td>
+    <td>Обществознание (Б)</td>
+    <td id="d1">{{ form.d1 }}</td>
+    <td>{{ form.d1 }}</td>
+    <td id="d1_res"></td>
+    <td rowspan="7">отметка</td>
+    <td class="table-secondary" rowspan="7"></td>
+    <td rowspan="2">по выбору</td>
+</tr>
+
+<tr>
+    <td>География (Б)</td>
     <td id="d2">{{ form.d2 }}</td>
     <td>{{ form.d2 }}</td>
     <td id="d2_res"></td>
 </tr>
 
 <tr>
-    <td>География (Б)</td>
+    <td>МХК (Б)</td>
     <td id="d3">{{ form.d3 }}</td>
     <td>{{ form.d3 }}</td>
     <td id="d3_res"></td>
-    <td class="table-secondary" rowspan="2">нет</td>
-    <td rowspan="2">по выбору</td>
+    <td class="table-secondary" rowspan="2"></td>
 </tr>
 
 <tr>
-    <td>Математика и информатика</td>
-    <td>Информатика (Б)</td>
+    <td>Теория познания (Б)</td>
     <td id="d4">{{ form.d4 }}</td>
     <td>{{ form.d4 }}</td>
     <td id="d4_res"></td>
 </tr>
 
 <tr>
-    <td>Естественные науки</td>
-    <td>Естествознание (Б)</td>
+    <td rowspan="3">Естественные науки</td>
+    <td>Биология (Б)</td>
     <td id="d5">{{ form.d5 }}</td>
     <td>{{ form.d5 }}</td>
     <td id="d5_res"></td>
-    <td colspan="2" class="table-secondary">нет</td>
+    <td rowspan="3">по выбору</td>
+</tr>
+
+<tr>
+    <td>Физика (Б)</td>
+    <td id="d6">{{ form.d6 }}</td>
+    <td>{{ form.d6 }}</td>
+    <td id="d6_res"></td>
+</tr>
+
+<tr>
+    <td>Химия (Б)</td>
+    <td id="d7">{{ form.d7 }}</td>
+    <td>{{ form.d7 }}</td>
+    <td id="d7_res"></td>
 </tr>
 
 <tr>
@@ -198,36 +200,30 @@
 </tr>
 
 <tr>
-    <td rowspan="3">Общественные науки</td>
-    <td class="table-success">Экономическая география</td>
-    <td id="d6">{{ form.d6 }}</td>
-    <td>{{ form.d6 }}</td>
-    <td id="d6_res"></td>
-    <td rowspan="4">отметка</td>
-    <td class="table-secondary" rowspan="4" colspan="2">нет</td>
-</tr>
-
-<tr>
-    <td class="table-success">Экономические задачи повышенной сложности</td>
+    <td rowspan="2">Математика и информатика</td>
+    <td class="table-success">Решение сложных задач по математике</td>
     <td>2</td>
     <td>2</td>
     <td>140</td>
+    <td rowspan="3">отметка</td>
+    <td class="table-secondary" rowspan="3" colspan="2"></td>
 </tr>
 
 <tr>
-    <td>История философии </td>
-    <td id="d7">{{ form.d7 }}</td>
-    <td>{{ form.d7 }}</td>
-    <td id="d7_res"></td>
+    <td class="table-success">Математические основы информатики</td>
+    <td>3</td>
+    <td>3</td>
+    <td>210</td>
 </tr>
 
 <tr>
-    <td>Математика и информатика</td>
-    <td>Сложные математические задачи</td>
+    <td>Естественные науки</td>
+    <td>Избранные главы учебников естественных наук</td>
     <td id="d8">{{ form.d8 }}</td>
     <td>{{ form.d8 }}</td>
     <td id="d8_res"></td>
 </tr>
+
 
 <tr><td colspan="8" class="table-warning"><strong>Блок 3: внеурочная деятельность (выбрать не более 10 часов в неделю)</strong></td></tr>
 

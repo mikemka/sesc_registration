@@ -1,4 +1,4 @@
-from forms.models import Gum, Sgum, SocEk
+from forms.models import Gum, Sgum, SocEk, MatInf
 from django import forms
 from core.generators import generate_id
 
@@ -143,4 +143,48 @@ class SocEkForm(forms.ModelForm):
             int(self.cleaned_data['d8']) * 2,
         ))
         if ALL > 7:
+            raise forms.ValidationError('Слишком много или мало часов недельной нагрузки!')
+
+
+class MatInfForm(forms.ModelForm):
+    class Meta:
+        model = MatInf
+        fields = ('name', 'subm', 'slug', 'd1', 'd2', 'd3', 'd4', 'd5', 'd6', 'd7', 'd8')
+    
+        widgets = {
+            "name": forms.TextInput(attrs={"class": 'form-control',}),
+            "subm": forms.CheckboxInput(attrs={"class": 'form-check-input'}),
+            "slug": forms.TextInput(attrs={"value": generate_id(), "type": 'hidden'}),
+
+            "d1": forms.CheckboxInput(attrs={"class": 'form-check-input'}),
+            "d2": forms.CheckboxInput(attrs={"class": 'form-check-input'}),
+            "d3": forms.CheckboxInput(attrs={"class": 'form-check-input'}),
+            "d4": forms.CheckboxInput(attrs={"class": 'form-check-input'}),
+            "d5": forms.CheckboxInput(attrs={"class": 'form-check-input'}),
+            "d6": forms.CheckboxInput(attrs={"class": 'form-check-input'}),
+            "d7": forms.CheckboxInput(attrs={"class": 'form-check-input'}),
+            "d8": forms.CheckboxInput(attrs={"class": 'form-check-input'}),
+        }
+    
+    def clean_name(self):
+        name = self.cleaned_data['name']
+        if len(name) >= 255:
+            raise forms.ValidationError(f'Длина текста ({len(name)}) превышает допустимые 255 символов!')
+        return name
+    
+    def clean(self):
+        self.cleaned_data['slug'] = generate_id()
+        ALL = sum((
+            int(self.cleaned_data['d1']) * 2,
+            int(self.cleaned_data['d2']),
+            int(self.cleaned_data['d3']),
+            int(self.cleaned_data['d4']),
+            int(self.cleaned_data['d5']),
+            2,
+            3,
+            int(self.cleaned_data['d6']) * 2,
+            int(self.cleaned_data['d7']) * 2,
+            int(self.cleaned_data['d8']) * 2,
+        ))
+        if ALL > 9:
             raise forms.ValidationError('Слишком много или мало часов недельной нагрузки!')

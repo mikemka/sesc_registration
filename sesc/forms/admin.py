@@ -1,5 +1,5 @@
 from django.contrib import admin
-from forms.models import Gum, Sgum, SocEk
+from forms.models import Gum, Sgum, SocEk, MatInf
 from django.utils.safestring import mark_safe
 
 
@@ -34,6 +34,14 @@ class SocEkAdmin(Template, admin.ModelAdmin):
     get_url.short_description = 'ID'
 
 
+class MatInfAdmin(Template, admin.ModelAdmin):
+    def get_url(self, object):
+        return mark_safe(f"<a href='{'../' * 10}4/{object.slug}/'>{object.slug}</a>")
+    
+    get_url.short_description = 'ID'
+
+
 admin.site.register(Gum, GumAdmin)
 admin.site.register(Sgum, SgumAdmin)
 admin.site.register(SocEk, SocEkAdmin)
+admin.site.register(MatInf, MatInfAdmin)

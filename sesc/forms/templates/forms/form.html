@@ -29,9 +29,8 @@
 
                         <div id="table">
                             <article class="mb-5">
-                                <div class="alert alert-primary" role="alert">
-                                    Ознакомьтесь с обязательными предметами. Цветом выделены предметы углублённого уровня изучения.
-                                </div>
+                                {% include 'forms/includes/article_1.html' %}
+
     
                                 <table class="table table-bordered text-center align-middle table-sm">
                                     <tbody>
@@ -71,10 +70,8 @@
                             </article>
 
                             <article class="mb-5">
-                                <div class="alert alert-primary" role="alert">
-                                    Вам необходимо выбрать учебные предметы и элективные курсы. Цветом выделены обязательные элективные курсы для данного профиля подготовки. Общее количество часов по Блоку 1 и Блоку 2 не должно превышать 37 часов в неделю.
-                                </div>
-    
+                                {% include 'forms/includes/article_2.html' %}
+
                                 <table class="table table-bordered text-center align-middle table-sm">
                                     <tbody>
                                         <tr><td colspan="2">&nbsp;</td><td colspan="3"><strong>Количество часов</strong></td><td colspan="3"><strong>Формы аттестации</strong></td></tr>
@@ -162,24 +159,8 @@
                             </article>
 
                             <article>
-                                <div class="alert alert-primary">
-                                    Выбор курсов внеурочной деятельности будет предоставлен в сентябре 2022 года.
-                                </div>
-
-                                <table class="table table-bordered text-center align-middle table-sm">
-                                    <tbody>
-                                        <tr><td rowspan="2">&nbsp;</td><td colspan="2"><strong>Количество часов</strong></td></tr>
-    
-                                        <tr><td>в неделю (10 класс)</td><td> в неделю (11 класс)</td></tr>
-    
-                                        <tr><td colspan="3" class="table-warning lead">Блок 3: внеурочная деятельность (выбрать не более 10 часов в неделю)</td></tr>
-                                        
-                                        <tr><td>Всего часов внеурочной деятельности</td><td>10</td><td>10</td></tr>
-    
-                                        <tr class="table-danger lead"><td>Всего максимальная недельная нагрузка</td><td>47</td><td>47</td></tr>
-    
-                                    </tbody>
-                                </table>
+                                {% include 'forms/includes/article_3.html' %}
+                                {% include 'forms/includes/table_3.html' %}
                             </article>
                         </div>
 

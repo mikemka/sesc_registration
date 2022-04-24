@@ -3,6 +3,7 @@ from tempfile import NamedTemporaryFile
 from string import ascii_uppercase as EN_ALPH
 from openpyxl.styles import Font
 import openpyxl as xls
+import time
 from forms import models
 from sesc.settings import SITE_URL
 
@@ -45,6 +46,16 @@ SUBJ_NAMES = {
         'd7': 'История философии',
         'd8': 'Сложные математические задачи',
     },
+    '10 матинф': {
+        'd1': 'Обществознание (Б)',
+        'd2': 'География (Б)',
+        'd3': 'МХК (Б)',
+        'd4': 'Теория познания (Б)',
+        'd5': 'Биология (Б)',
+        'd6': 'Физика (Б)',
+        'd7': 'Химия (Б)',
+        'd8': 'Избранные главы учебников естественных наук',
+    }
 }
 
 
@@ -86,6 +97,16 @@ def export(request):
             'd6': models.SocEk.objects.filter(d6=True, attached=True),
             'd7': models.SocEk.objects.filter(d7=True, attached=True),
             'd8': models.SocEk.objects.filter(d8=True, attached=True),
+        },
+        '10 матинф': {
+            'd1': models.MatInf.objects.filter(d1=True, attached=True),
+            'd2': models.MatInf.objects.filter(d2=True, attached=True),
+            'd3': models.MatInf.objects.filter(d3=True, attached=True),
+            'd4': models.MatInf.objects.filter(d4=True, attached=True),
+            'd5': models.MatInf.objects.filter(d5=True, attached=True),
+            'd6': models.MatInf.objects.filter(d6=True, attached=True),
+            'd7': models.MatInf.objects.filter(d7=True, attached=True),
+            'd8': models.MatInf.objects.filter(d8=True, attached=True),
         }
     }
 
