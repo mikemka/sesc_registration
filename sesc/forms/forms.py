@@ -225,8 +225,8 @@ class FizMatForm(forms.ModelForm):
             int(self.cleaned_data['d4']),
             int(self.cleaned_data['d5']),
             int(self.cleaned_data['d6']) * 2,
-            int(self.cleaned_data['d7']) * 0.5,
             int(self.cleaned_data['d8']) * 2,
+            4,
         ))
-        if ALL > 7:
+        if ALL > 8:
             raise forms.ValidationError('Слишком много или мало часов недельной нагрузки!')
