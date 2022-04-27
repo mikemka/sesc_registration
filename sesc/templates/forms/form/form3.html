@@ -5,14 +5,14 @@
     <div class="row">
         <div class="mx-auto">
             <div class="rounded shadow">
-                {% include 'forms/navbar_back.html' %}
+                {% include 'forms/includes/navbar_back.html' %}
                 <article class="container pb-3">
                     <p class="text-end mb-0">Принято Ученым советом СУНЦ</p>
                     <p class="text-end lh-sm">протокол № 10 от 16 декабря 2021 года</p>
 
                     <p class="text-center mb-0 lead">Учебный план для 10-11 класса.</p>
-                    <p class="text-center lh-sm mb-0">Направление подготовки: Гуманитарные науки. Профиль подготовки: Социально-гуманитарный.</p>
-                    <p class="text-center lh-sm">Углубленные предметы: история, обществознание (право), иностранный язык.</p>
+                    <p class="text-center lh-sm mb-0">Направление подготовки: Гуманитарные науки. Профиль подготовки: Социально-экономический.</p>
+                    <p class="text-center lh-sm">Углубленные предметы: иностранный язык, математика, обществознание (право, экономика).</p>
                     
                     {% if error %}<div class="alert alert-danger mb-3">{{ error }}</div>{% endif %}
                     
@@ -56,11 +56,11 @@
 
                 <tr>
                     <td rowspan="2">Русский язык и литература</td>
-                    <td class="table-success">Русский язык (Б)</td>
+                    <td>Русский язык (Б)</td>
                     <td colspan="2">1</td>
                     <td>70</td>
-                    <td rowspan="12">отметка</td>
-                    <td>сочинение</td>
+                    <td rowspan="13">отметка</td>
+                    <td>экзамен</td>
                     <td>ЕГЭ</td>
                 </tr>
 
@@ -85,37 +85,43 @@
                     <td class="table-success">Иностранный язык (У)</td>
                     <td colspan="2">6</td>
                     <td>420</td>
-                    <td>диф. зачет</td>
+                    <td>экзамен</td>
                     <td rowspan="3">по выбору</td>
                 </tr>
 
                 <tr>
-                    <td rowspan="3">Общественные науки</td>
-                    <td class="table-success">История (У)</td>
-                    <td colspan="2">4</td>
-                    <td>280</td>
-                    <td rowspan="3">экзамен</td>
+                    <td rowspan="4">Общественные науки</td>
+                    <td>История (Б)</td>
+                    <td colspan="2">2</td>
+                    <td>140</td>
+                    <td class="table-secondary"></td>
                 </tr>
 
                 <tr>
                     <td>Обществознание (Б)</td>
                     <td colspan="2">2</td>
                     <td>140</td>
+                    <td rowspan="4">экзамен</td>
                 </tr>
 
                 <tr>
                     <td class="table-success">Право (У)</td>
                     <td colspan="2">2</td>
                     <td>140</td>
-                    <td class="table-secondary"></td>
+                    <td class="table-secondary" rowspan="2"></td>
+                </tr>
+
+                <tr>
+                    <td class="table-success">Экономика (У)</td>
+                    <td colspan="2">2</td>
+                    <td>140</td>
                 </tr>
 
                 <tr>
                     <td>Математика и информатика</td>
                     <td>Математика: алгебра и начала математического анализа, геометрия (Б)</td>
-                    <td colspan="2">4</td>
-                    <td>280</td>
-                    <td class="table-secondary"></td>
+                    <td colspan="2">6</td>
+                    <td>420</td>
                     <td>ЕГЭ</td>
                 </tr>
 
@@ -149,16 +155,16 @@
 
                 <tr class="table-danger">
                     <td colspan="2">Всего часов Блок 1</td>
-                    <td>28</td>
-                    <td>27</td>
-                    <td>1855</td>
+                    <td>30</td>
+                    <td>29</td>
+                    <td>1995</td>
                     <td colspan="3"></td>
                 </tr>
 
                 <tr class="table-warning">
                     <td colspan="2"><strong>Доступно часов для выбора учебных предметов по выбору и элективных курсов</strong></td>
-                    <td>9</td>
-                    <td>10</td>
+                    <td>7</td>
+                    <td>8</td>
                     <td colspan="4"></td>
                 </tr>
             </tbody>
@@ -197,25 +203,25 @@
 
                 <tr>
                     <td rowspan="3">Общественные науки</td>
-                    <td>География (Б)</td>
+                    <td>Теория познания (Б)</td>
                     <td colspan="2">{{ form.d1 }} 1 ч.</td>
                     <td>70</td>
                     <td rowspan="5">отметка</td>
-                    <td class="table-secondary"></td>
-                    <td>по выбору</td>
-                </tr>
-
-                <tr>
-                    <td>Теория познания (Б)</td>
-                    <td colspan="2">{{ form.d2 }} 1 ч.</td>
-                    <td>70</td>
-                    <td colspan="2" rowspan="2" class="table-secondary"></td>
+                    <td class="table-secondary" colspan="2" rowspan="2"></td>
                 </tr>
 
                 <tr>
                     <td>МХК (Б)</td>
+                    <td colspan="2">{{ form.d2 }} 1 ч.</td>
+                    <td>70</td>
+                </tr>
+
+                <tr>
+                    <td>География (Б)</td>
                     <td colspan="2">{{ form.d3 }} 1 ч.</td>
                     <td>70</td>
+                    <td class="table-secondary" rowspan="2"></td>
+                    <td rowspan="2">по выбору</td>
                 </tr>
 
                 <tr>
@@ -223,8 +229,6 @@
                     <td>Информатика (Б)</td>
                     <td colspan="2">{{ form.d4 }} 1 ч.</td>
                     <td>70</td>
-                    <td class="table-secondary"></td>
-                    <td>по выбору</td>
                 </tr>
 
                 <tr>
@@ -240,37 +244,16 @@
                 </tr>
                 
                 <tr>
-                    <td rowspan="4">Русский язык и литература</td>
-                    <td class="table-success">Риторика</td>
-                    <td colspan="2">
-                        <input type="checkbox" class="form-check-input" checked disabled> 1 ч.
-                    </td>
+                    <td rowspan="3">Общественные науки</td>
+                    <td class="table-success">Экономическая география</td>
+                    <td colspan="2">{{ form.d6 }} 1 ч.</td>
                     <td>70</td>
-                    <td rowspan="8">отметка</td>
-                    <td class="table-secondary" rowspan="8" colspan="2"></td>
+                    <td rowspan="4">отметка</td>
+                    <td class="table-secondary" rowspan="4" colspan="2"></td>
                 </tr>
 
                 <tr>
-                    <td>Зарубежная литература</td>
-                    <td colspan="2">{{ form.d6 }} 2 ч.</td>
-                    <td>140</td>
-                </tr>
-
-                <tr>
-                    <td>Современная литература в жанровом аспекте</td>
-                    <td colspan="2">{{ form.d7 }} 1 ч.</td>
-                    <td>70</td>
-                </tr>
-
-                <tr>
-                    <td>Диалоги с Чеховым</td>
-                    <td colspan="2">{{ form.d8 }} 1 ч.</td>
-                    <td>70</td>
-                </tr>
-
-                <tr>
-                    <td rowspan="4">Общественные науки</td>
-                    <td class="table-success">Сложные аспекты истории России c древнейших времен до конца XIX века</td>
+                    <td class="table-success">Экономические задачи повышенной сложности</td>
                     <td colspan="2">
                         <input type="checkbox" class="form-check-input" disabled checked> 2 ч.
                     </td>
@@ -278,20 +261,15 @@
                 </tr>
 
                 <tr>
-                    <td>Политология</td>
-                    <td colspan="2">{{ form.d9 }} 2 ч.</td>
+                    <td>История философии </td>
+                    <td colspan="2">{{ form.d7 }} 2 ч.</td>
                     <td>140</td>
                 </tr>
 
                 <tr>
-                    <td>Социология</td>
-                    <td colspan="2">{{ form.d10 }} 2 ч.</td>
-                    <td>140</td>
-                </tr>
-                
-                <tr>
-                    <td>История философии </td>
-                    <td colspan="2">{{ form.d11 }} 2 ч.</td>
+                    <td>Математика и информатика</td>
+                    <td>Сложные математические задачи</td>
+                    <td colspan="2">{{ form.d8 }} 2 ч.</td>
                     <td>140</td>
                 </tr>
 
@@ -302,13 +280,14 @@
                     <td colspan="3"></td>
                 </tr>
 
-                <tr class="table-dark lead" id="ext">
-                    <td colspan="2" id="ext-info">Неверное количество часов нагрузки</td>
-                    <td id="ext1">31</td>
-                    <td id="ext2">30</td>
-                    <td id="ext3">2135</td>
+                <tr class="table-primary lead" id="ext">
+                    <td colspan="2" id="ext-info">Текущая недельная нагрузка</td>
+                    <td id="ext1">32</td>
+                    <td id="ext2">31</td>
+                    <td id="ext3">2205</td>
                     <td colspan="3"></td>
                 </tr>
+
 
                 <tr class="table-danger lead">
                     <td colspan="2">Всего максимальная недельная нагрузка</td>
@@ -345,20 +324,17 @@
 
 <script>
     // JS <3
-    for (let i = 1; i <= 11; i++) {
+    for (let i = 1; i <= 8; i++) {
         document.getElementById(`id_d${i}`).onclick = function () {
             let d1 = Number(document.getElementById('id_d1').checked);
             let d2 = Number(document.getElementById('id_d2').checked);
             let d3 = Number(document.getElementById('id_d3').checked);
             let d4 = Number(document.getElementById('id_d4').checked);
             let d5 = Number(document.getElementById('id_d5').checked) * 3;
-            let d6 = Number(document.getElementById('id_d6').checked) * 2;
-            let d7 = Number(document.getElementById('id_d7').checked);
-            let d8 = Number(document.getElementById('id_d8').checked);
-            let d9 = Number(document.getElementById('id_d9').checked) * 2;
-            let d10 = Number(document.getElementById('id_d10').checked) * 2;
-            let d11 = Number(document.getElementById('id_d11').checked) * 2;
-            let ext = d1 + d2 + d3 + d4 + d5 + d6 + d7 + d8 + d9 + d10 + d11 + 30;
+            let d6 = Number(document.getElementById('id_d6').checked);
+            let d7 = Number(document.getElementById('id_d7').checked) * 2;
+            let d8 = Number(document.getElementById('id_d8').checked) * 2;
+            let ext = d1 + d2 + d3 + d4 + d5 + d6 + d7 + d8 + 31;
             document.getElementById("ext1").textContent = ext + 1;
             document.getElementById("ext2").textContent = ext;
             document.getElementById("ext3").textContent = (ext + ext + 1) * 35;

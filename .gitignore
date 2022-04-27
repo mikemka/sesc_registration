@@ -1,7 +1,9 @@
 .DS_Store
-.venv
+.venv/
+venv/
 .env
-.idea
-__pycache__
+.idea/
+__pycache__/
 *.sqlite3
 *.db
+*.log
