@@ -25,6 +25,9 @@ urlpatterns = [
 
     path('4/<slug:pk>/', forms.result4),
     path('4/', forms.form4, name='10matinf'),
+
+    path('5/<slug:pk>/', forms.result5),
+    path('5/', forms.form5, name='10fizmat'),
 ]
 
 if settings.DEBUG:

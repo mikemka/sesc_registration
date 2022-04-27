@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from django.core.handlers.wsgi import WSGIRequest as Request
-from forms.forms import GumForm, SgumForm, SocEkForm, MatInfForm
+from forms.forms import GumForm, SgumForm, SocEkForm, MatInfForm, FizMatForm
 
 
 
@@ -54,3 +54,17 @@ def form4(request: Request):
             return redirect(f'../4/{slug}/')  #!
         data['error'] = 'Ошибка! Проверьте правильность введенных данных!'
     return render(request, 'forms/form/form4.html', data)  #!
+
+
+def form5(request: Request):
+    rn = FizMatForm()  #!
+    template_name = 'forms/form/form5.html'  #!
+    data = {'form': rn, 'error': ''}
+    if request.method == 'POST':
+        frm = FizMatForm(request.POST)  #!
+        if frm.is_valid():
+            slug = frm.cleaned_data['slug']
+            frm.save()
+            return redirect(f'../5/{slug}/')  #!
+        data['error'] = 'Ошибка! Проверьте правильность введенных данных!'
+    return render(request, template_name, data)
