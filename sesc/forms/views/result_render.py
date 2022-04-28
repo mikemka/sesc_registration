@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from django.core.handlers.wsgi import WSGIRequest as Request
-from forms.models import Gum, Sgum, SocEk, MatInf
+from forms.models import Gum, Sgum, SocEk, MatInf, FizMat
 
 
 def result(request: Request, pk):
@@ -106,4 +106,26 @@ def result4(request: Request, pk):
         "form": dt,
         "all1": ALL1 + 28,
         "all": ALL1 * 2 * 35 + 1855,
+    })  
+
+
+def result5(request: Request, pk):
+    try:
+        data_copy = FizMat.objects.get(slug=pk)  #!
+    except:
+        return redirect('10fizmat')  #!
+    dt = {
+        "name": data_copy.name,
+        "slug": data_copy.slug,
+        "d1": int(data_copy.d1) * 2,
+        "d2": int(data_copy.d2),
+        "d3": int(data_copy.d3),
+        "d4": int(data_copy.d4),
+        "d5": int(data_copy.d5),
+        "d6": int(data_copy.d6) * 2,
+        "d7": int(data_copy.d7),
+        "d8": int(data_copy.d8) * 2,
+    }
+    return render(request, 'forms/result/result5.html', {  #!
+        "form": dt,
     })  

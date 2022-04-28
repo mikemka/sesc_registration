@@ -3,7 +3,6 @@ from tempfile import NamedTemporaryFile
 from string import ascii_uppercase as EN_ALPH
 from openpyxl.styles import Font
 import openpyxl as xls
-import time
 from forms import models
 from sesc.settings import SITE_URL
 
@@ -54,6 +53,16 @@ SUBJ_NAMES = {
         'd5': 'Биология (Б)',
         'd6': 'Физика (Б)',
         'd7': 'Химия (Б)',
+        'd8': 'Избранные главы учебников естественных наук',
+    },
+    '10 физмат': {
+        'd1': 'Обществознание (Б)',
+        'd2': 'География (Б)',
+        'd3': 'МХК (Б)',
+        'd4': 'Теория познания (Б)',
+        'd5': 'Биология (Б)',
+        'd6': 'Химия (Б)',
+        'd7': 'Астрономия',
         'd8': 'Избранные главы учебников естественных наук',
     }
 }
@@ -107,6 +116,16 @@ def export(request):
             'd6': models.MatInf.objects.filter(d6=True, attached=True),
             'd7': models.MatInf.objects.filter(d7=True, attached=True),
             'd8': models.MatInf.objects.filter(d8=True, attached=True),
+        },
+        '10 физмат': {
+            'd1': models.FizMat.objects.filter(d1=True, attached=True),
+            'd2': models.FizMat.objects.filter(d2=True, attached=True),
+            'd3': models.FizMat.objects.filter(d3=True, attached=True),
+            'd4': models.FizMat.objects.filter(d4=True, attached=True),
+            'd5': models.FizMat.objects.filter(d5=True, attached=True),
+            'd6': models.FizMat.objects.filter(d6=True, attached=True),
+            'd7': models.FizMat.objects.filter(d7=True, attached=True),
+            'd8': models.FizMat.objects.filter(d8=True, attached=True),
         }
     }
 
