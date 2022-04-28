@@ -14,7 +14,7 @@ urlpatterns = [
     path('lk/', admin.site.urls, name='admin'),
     path('terms/', main.terms, name='terms'),
     path('export/', export, name='export'),
-    
+
     path('aboba/', (lambda request: HttpResponse(' '.join([f'<span style=\'color: rgb({randint(1, 255)}, {randint(1, 255)}, {randint(1, 255)});\'>абоба</span>' for _ in range(500)]))), name='aboba'),
 
     path('', main.home, name='home'),
@@ -33,6 +33,9 @@ urlpatterns = [
 
     path('5/<slug:pk>/', forms.result5),
     path('5/', forms.form5, name='10fizmat'),
+
+    path('6/<slug:pk>/', forms.result6),
+    path('6/', forms.form6, name='10fiztech'),
 ]
 
 if settings.DEBUG:

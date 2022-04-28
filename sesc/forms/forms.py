@@ -235,7 +235,7 @@ class FizMatForm(forms.ModelForm):
 class FizTechForm(forms.ModelForm):
     class Meta:
         model = FizTech
-        fields = ('name', 'subm', 'slug', 'd1', 'd2', 'd3', 'd4', 'd5', 'd6', 'd7', 'd8')
+        fields = ('name', 'subm', 'slug', 'd1', 'd2', 'd3', 'd4', 'd5', 'd6', 'd7', 'd8', 'd9')
     
         widgets = {
             "name": forms.TextInput(attrs={"class": 'form-control',}),
@@ -250,6 +250,7 @@ class FizTechForm(forms.ModelForm):
             "d6": forms.CheckboxInput(attrs={"class": 'form-check-input'}),
             "d7": forms.CheckboxInput(attrs={"class": 'form-check-input'}),
             "d8": forms.CheckboxInput(attrs={"class": 'form-check-input'}),
+            "d9": forms.CheckboxInput(attrs={"class": 'form-check-input'}),
         }
     
     def clean(self):
