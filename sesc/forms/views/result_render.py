@@ -146,8 +146,8 @@ def result6(request: Request, pk):
         "d5": int(data_copy.d5),
         "d6": int(data_copy.d6) * 2,
         "d7": int(data_copy.d7) * 2,
-        "d7": int(data_copy.d8),
-        "d8": int(data_copy.d9) * 2,
+        "d8": int(data_copy.d8),
+        "d9": int(data_copy.d9) * 2,
     }
     return render(request, 'forms/result/result6.html', {  #!
         "form": dt,
