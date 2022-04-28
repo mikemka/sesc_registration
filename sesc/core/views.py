@@ -3,7 +3,6 @@ from tempfile import NamedTemporaryFile
 from string import ascii_uppercase as EN_ALPH
 from openpyxl.styles import Font
 import openpyxl as xls
-import time
 from forms import models
 from sesc.settings import SITE_URL
 
