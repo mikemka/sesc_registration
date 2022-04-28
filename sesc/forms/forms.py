@@ -1,10 +1,9 @@
 from forms.models import Gum, Sgum, SocEk, MatInf, FizMat, FizTech
-from core.forms import BaseTemplate as ClearName
 from django import forms
 from core.generators import generate_id
 
 
-class GumForm(ClearName, forms.ModelForm):
+class GumForm(forms.ModelForm):
     class Meta:
         model = Gum
         fields = ('name', 'subm', 'slug', 'd1', 'd2', 'd3', 'd4', 'd5', 'd6', 'd7', 'd8', 'd9', 'd10', 'd11')
@@ -27,6 +26,12 @@ class GumForm(ClearName, forms.ModelForm):
             "d11": forms.CheckboxInput(attrs={"class": 'form-check-input'}),
         }
     
+    def clean_name(self):
+        name = self.cleaned_data['name']
+        if len(name) >= 255:
+            raise forms.ValidationError(f'Длина текста ({len(name)}) превышает допустимые 255 символов!')
+        return name
+    
     def clean(self):
         self.cleaned_data['slug'] = generate_id()
         ALL = sum((
@@ -48,7 +53,7 @@ class GumForm(ClearName, forms.ModelForm):
             raise forms.ValidationError('Слишком много часов недельной нагрузки!')
 
 
-class SgumForm(ClearName, forms.ModelForm):
+class SgumForm(forms.ModelForm):
     class Meta:
         model = Sgum
         fields = ('name', 'subm', 'slug', 'd1', 'd2', 'd3', 'd4', 'd5', 'd6', 'd7', 'd8', 'd9', 'd10', 'd11')
@@ -71,6 +76,12 @@ class SgumForm(ClearName, forms.ModelForm):
             "d11": forms.CheckboxInput(attrs={"class": 'form-check-input'}),
         }
     
+    def clean_name(self):
+        name = self.cleaned_data['name']
+        if len(name) >= 255:
+            raise forms.ValidationError(f'Длина текста ({len(name)}) превышает допустимые 255 символов!')
+        return name
+    
     def clean(self):
         self.cleaned_data['slug'] = generate_id()
         ALL = sum((
@@ -92,7 +103,7 @@ class SgumForm(ClearName, forms.ModelForm):
             raise forms.ValidationError('Слишком много или мало часов недельной нагрузки!')
 
 
-class SocEkForm(ClearName, forms.ModelForm):
+class SocEkForm(forms.ModelForm):
     class Meta:
         model = SocEk
         fields = ('name', 'subm', 'slug', 'd1', 'd2', 'd3', 'd4', 'd5', 'd6', 'd7', 'd8')
@@ -112,6 +123,12 @@ class SocEkForm(ClearName, forms.ModelForm):
             "d8": forms.CheckboxInput(attrs={"class": 'form-check-input'}),
         }
     
+    def clean_name(self):
+        name = self.cleaned_data['name']
+        if len(name) >= 255:
+            raise forms.ValidationError(f'Длина текста ({len(name)}) превышает допустимые 255 символов!')
+        return name
+    
     def clean(self):
         self.cleaned_data['slug'] = generate_id()
         ALL = sum((
@@ -129,7 +146,7 @@ class SocEkForm(ClearName, forms.ModelForm):
             raise forms.ValidationError('Слишком много или мало часов недельной нагрузки!')
 
 
-class MatInfForm(ClearName, forms.ModelForm):
+class MatInfForm(forms.ModelForm):
     class Meta:
         model = MatInf
         fields = ('name', 'subm', 'slug', 'd1', 'd2', 'd3', 'd4', 'd5', 'd6', 'd7', 'd8')
@@ -149,6 +166,12 @@ class MatInfForm(ClearName, forms.ModelForm):
             "d8": forms.CheckboxInput(attrs={"class": 'form-check-input'}),
         }
     
+    def clean_name(self):
+        name = self.cleaned_data['name']
+        if len(name) >= 255:
+            raise forms.ValidationError(f'Длина текста ({len(name)}) превышает допустимые 255 символов!')
+        return name
+    
     def clean(self):
         self.cleaned_data['slug'] = generate_id()
         ALL = sum((
@@ -167,7 +190,7 @@ class MatInfForm(ClearName, forms.ModelForm):
             raise forms.ValidationError('Слишком много или мало часов недельной нагрузки!')
 
 
-class FizMatForm(ClearName, forms.ModelForm):
+class FizMatForm(forms.ModelForm):
     class Meta:
         model = FizMat
         fields = ('name', 'subm', 'slug', 'd1', 'd2', 'd3', 'd4', 'd5', 'd6', 'd7', 'd8')
@@ -187,6 +210,12 @@ class FizMatForm(ClearName, forms.ModelForm):
             "d8": forms.CheckboxInput(attrs={"class": 'form-check-input'}),
         }
     
+    def clean_name(self):
+        name = self.cleaned_data['name']
+        if len(name) >= 255:
+            raise forms.ValidationError(f'Длина текста ({len(name)}) превышает допустимые 255 символов!')
+        return name
+    
     def clean(self):
         self.cleaned_data['slug'] = generate_id()
         ALL = sum((
@@ -203,7 +232,7 @@ class FizMatForm(ClearName, forms.ModelForm):
             raise forms.ValidationError('Слишком много или мало часов недельной нагрузки!')
 
 
-class FizTechForm(ClearName, forms.ModelForm):
+class FizTechForm(forms.ModelForm):
     class Meta:
         model = FizTech
         fields = ('name', 'subm', 'slug', 'd1', 'd2', 'd3', 'd4', 'd5', 'd6', 'd7', 'd8')
