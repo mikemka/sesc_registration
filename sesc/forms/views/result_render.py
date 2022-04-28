@@ -123,12 +123,9 @@ def result5(request: Request, pk):
         "d4": int(data_copy.d4),
         "d5": int(data_copy.d5),
         "d6": int(data_copy.d6) * 2,
-        "d7": int(data_copy.d7) * 0.5,
+        "d7": int(data_copy.d7),
         "d8": int(data_copy.d8) * 2,
     }
-    ALL1 = sum((dt['d1'], dt['d2'], dt['d3'], dt['d4'], dt['d5'], dt['d6'], dt['d7'], dt['d8'], 4))
     return render(request, 'forms/result/result5.html', {  #!
         "form": dt,
-        "all1": ALL1 + 30,
-        "all": ALL1 * 2 * 35 + 1995,
     })  

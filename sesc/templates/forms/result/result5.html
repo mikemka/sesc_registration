@@ -1,0 +1,281 @@
+{% extends 'forms/includes/result_template.html' %}
+
+{% block education_profile %}
+<p>Направление подготовки: Точные науки. Профиль подготовки: <b>Физико-математический</b>.</p>
+<p>Углубленные предметы: математика, физика, информатика.</p>
+{% endblock %}
+
+{% block tbody %}
+<tr>
+    <td colspan="2">&nbsp;</td>
+    <td colspan="3"><strong>Количество часов</strong></td>
+    <td colspan="3"><strong>Формы аттестации</strong></td>
+</tr>
+
+<tr>
+    <td>Предметные области</td>
+    <td>Предметы (уровень освоения: Б - базовый, У - углубленный)</td>
+    <td>в неделю (10 класс)</td>
+    <td>в неделю (11 класс)</td>
+    <td>за два года (70 учебных недель)</td>
+    <td>Текущая аттетсация</td>
+    <td>Промежуточная аттестация: зимняя и летняя сессии</td>
+    <td>Итоговая аттестация</td>
+</tr>
+
+<tr>
+    <td colspan="8" class="table-warning lead">Блок 1: обязательные учебные предметы</td>
+</tr>
+
+<tr>
+    <td rowspan="2">Русский язык и литература</td>
+    <td>Русский язык (Б)</td>
+    <td>1</td>
+    <td>1</td>
+    <td>70</td>
+    <td rowspan="12">отметка</td>
+    <td>нет</td>
+    <td>ЕГЭ</td>
+</tr>
+
+<tr>
+    <td>Литература (Б)</td>
+    <td>3</td>
+    <td>3</td>
+    <td>210</td>
+    <td>нет</td>
+    <td>по выбору</td>
+</tr>
+
+<tr>
+    <td>Родной язык и родная литература</td>
+    <td>Родной русский язык (Б)</td>
+    <td>1</td>
+    <td>1</td>
+    <td>70</td>
+    <td>нет</td>
+    <td class="table-secondary">нет</td>
+</tr>
+
+<tr>
+    <td>Иностранные языки</td>
+    <td>Иностранный язык (Б)</td>
+    <td>3</td>
+    <td>3</td>
+    <td>210</td>
+    <td>нет</td>
+    <td>по выбору</td>
+</tr>
+
+<tr>
+    <td>Общественные науки</td>
+    <td>История (Б)</td>
+    <td>2</td>
+    <td>2</td>
+    <td>140</td>
+    <td>нет</td>
+    <td>по выбору</td>
+</tr>
+
+<tr>
+    <td rowspan="2">Математика и информатика</td>
+    <td class="table-success">Математика: алгебра и начала математического анализа, геометрия (У)</td>
+    <td>6</td>
+    <td>6</td>
+    <td>420</td>
+    <td>экзамен</td>
+    <td>ЕГЭ</td>
+</tr>
+
+<tr>
+    <td class="table-success">Информатика (У)</td>
+    <td>4</td>
+    <td>4</td>
+    <td>280</td>
+    <td>экзамен</td>
+    <td>по выбору</td>
+</tr>
+
+<tr>
+    <td rowspan="2">Естественные науки</td>
+    <td class="table-success">Физика (У)</td>
+    <td>5</td>
+    <td>5</td>
+    <td>350</td>
+    <td>экзамен</td>
+    <td>по выбору</td>
+</tr>
+
+<tr>
+    <td>Астрономия (Б)*</td>
+    <td>0</td>
+    <td>1</td>
+    <td>35</td>
+    <td>нет</td>
+    <td>нет</td>
+</tr>
+
+<tr>
+    <td rowspan="2">Физическая культура, экология и ОБЖ</td>
+    <td>Физическая культура (Б)</td>
+    <td>2</td>
+    <td>2</td>
+    <td>140</td>
+    <td>нет</td>
+    <td>нет</td>
+</tr>
+
+<tr>
+    <td>Основы безопасности жизнедеятельности (Б)**</td>
+    <td>1</td>
+    <td>1</td>
+    <td>70</td>
+    <td>нет</td>
+    <td>нет</td>
+</tr>
+
+<tr>
+    <td colspan="2">Индивидуальный проект ***</td>
+    <td>1</td>
+    <td>1</td>
+    <td>70</td>
+    <td>нет</td>
+    <td>нет</td>
+</tr>
+
+<tr class="table-danger">
+    <td colspan="2">Всего часов Блок 1</td>
+    <td>29</td>
+    <td>30</td>
+    <td>1995</td>
+    <td colspan="3"></td>
+</tr>
+
+<tr>
+    <td colspan="8" class="table-warning lead">Блок 2: часть, формируемая участниками образовательных отношений</td>
+</tr>
+
+<tr>
+    <td colspan="8" class="table-warning lead">Учебные предметы по выбору</td>
+</tr>
+
+<tr>
+    <td rowspan="4">Общественные науки</td>
+    <td>Обществознание (Б)</td>
+    <td id="1">{{ form.d1 }}</td>
+    <td>{{ form.d1 }}</td>
+    <td id="d1"></td>
+    <td rowspan="6">отметка</td>
+    <td>нет</td>
+    <td>по выбору</td>
+</tr>
+
+<tr>
+    <td>География (Б)</td>
+    <td id="2">{{ form.d2 }}</td>
+    <td>{{ form.d2 }}</td>
+    <td id="d2"></td>
+    <td>нет</td>
+    <td>по выбору</td>
+</tr>
+
+<tr>
+    <td>МХК (Б)</td>
+    <td id="3">{{ form.d3 }}</td>
+    <td>{{ form.d3 }}</td>
+    <td id="d3"></td>
+    <td>нет</td>
+    <td>нет</td>
+</tr>
+
+<tr>
+    <td>Теория познания (Б)</td>
+    <td id="4">{{ form.d4 }}</td>
+    <td>{{ form.d4 }}</td>
+    <td id="d4"></td>
+    <td>нет</td>
+    <td>нет</td>
+</tr>
+
+<tr>
+    <td rowspan="2">Естественные науки</td>
+    <td>Биология (Б)</td>
+    <td id="5">{{ form.d5 }}</td>
+    <td>{{ form.d5 }}</td>
+    <td id="d5"></td>
+    <td>нет</td>
+    <td>по выбору</td>
+</tr>
+
+<tr>
+    <td>Химия (Б)</td>
+    <td id="6">{{ form.d6 }}</td>
+    <td>{{ form.d6 }}</td>
+    <td id="d6"></td>
+    <td>нет</td>
+    <td>по выбору</td>
+</tr>
+
+<tr>
+    <td colspan="8" class="table-warning lead">Элективные курсы</td>
+</tr>
+
+<tr>
+    <td>Математика и информатика</td>
+    <td class="table-success">Решение сложных задач по математике</td>
+    <td>2</td>
+    <td>2</td>
+    <td>140</td>
+    <td rowspan="4">отметка</td>
+    <td class="table-secondary">нет</td>
+    <td class="table-secondary">нет</td>
+</tr>
+
+<tr>
+    <td rowspan="3">Естественные науки</td>
+    <td class="table-success">Физические задачи повышенной сложности</td>
+    <td>2</td>
+    <td>2</td>
+    <td>140</td>
+    <td class="table-secondary">нет</td>
+    <td class="table-secondary">нет</td>
+</tr>
+
+<tr>
+    <td>Астрономия</td>
+    <td id="7">{{ form.d7 }}</td>
+    <td>0</td>
+    <td id="d7"></td>
+    <td class="table-secondary">нет</td>
+    <td class="table-secondary">нет</td>
+</tr>
+
+<tr>
+    <td>Избранные главы учебников естественных наук</td>
+    <td id="8">{{ form.d8 }}</td>
+    <td>{{ form.d8 }}</td>
+    <td id="d8"></td>
+    <td class="table-secondary">нет</td>
+    <td class="table-secondary">нет</td>
+</tr>
+
+<tr><td colspan="8" class="table-warning"><strong>Блок 3: внеурочная деятельность (выбрать не более 10 часов в неделю)</strong></td></tr>
+
+<tr class="table-danger"><td colspan="2">Всего часов внеурочной деятельности</td><td>10</td><td>10</td><td colspan="4"></td></tr>
+
+<tr class="table-danger"><td colspan="2">Количество часов по учебному плану (включая внеурочную деятельность)</td><td>{{ form.d1|add:form.d2|add:form.d3|add:form.d4|add:form.d5|add:form.d6|add:form.d7|add:form.d8|add:43 }}</td><td>{{ form.d1|add:form.d2|add:form.d3|add:form.d4|add:form.d5|add:form.d6|add:form.d8|add:43 }}</td><td colspan="4"></td></tr>
+
+{% endblock %}
+
+{% block disable_autocount %}
+<script>
+    document.getElementById('d1').textContent = document.getElementById('1').textContent * 2 * 35;
+    document.getElementById('d2').textContent = document.getElementById('2').textContent * 2 * 35;
+    document.getElementById('d3').textContent = document.getElementById('3').textContent * 2 * 35;
+    document.getElementById('d4').textContent = document.getElementById('4').textContent * 2 * 35;
+    document.getElementById('d5').textContent = document.getElementById('5').textContent * 2 * 35;
+    document.getElementById('d6').textContent = document.getElementById('6').textContent * 2 * 35;
+    document.getElementById('d7').textContent = document.getElementById('7').textContent * 35;
+    document.getElementById('d8').textContent = document.getElementById('8').textContent * 2 * 35;
+</script>
+{% endblock %}
