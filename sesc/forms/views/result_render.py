@@ -1,9 +1,9 @@
 from django.shortcuts import redirect, render
 from django.core.handlers.wsgi import WSGIRequest as Request
-from forms.models import Gum, Sgum, SocEk, MatInf, FizMat, FizTech
+from forms.models import Gum, Sgum, SocEk, MatInf, FizMat, FizTech, Him
 
 
-def result(request: Request, pk):
+def result(request: Request, pk: int):
     try:
         data_copy = Gum.objects.get(slug=pk)
     except:
@@ -31,7 +31,7 @@ def result(request: Request, pk):
     })
 
 
-def result2(request: Request, pk):
+def result2(request: Request, pk: int):
     try:
         data_copy = Sgum.objects.get(slug=pk)
     except:
@@ -59,7 +59,7 @@ def result2(request: Request, pk):
     })
 
 
-def result3(request: Request, pk):
+def result3(request: Request, pk: int):
     try:
         data_copy = SocEk.objects.get(slug=pk)
     except:
@@ -84,7 +84,7 @@ def result3(request: Request, pk):
     })  
 
 
-def result4(request: Request, pk):
+def result4(request: Request, pk: int):
     try:
         data_copy = MatInf.objects.get(slug=pk)  #!
     except:
@@ -109,7 +109,7 @@ def result4(request: Request, pk):
     })  
 
 
-def result5(request: Request, pk):
+def result5(request: Request, pk: int):
     try:
         data_copy = FizMat.objects.get(slug=pk)  #!
     except:
@@ -131,7 +131,7 @@ def result5(request: Request, pk):
     })  
 
 
-def result6(request: Request, pk):
+def result6(request: Request, pk: int):
     try:
         data_copy = FizTech.objects.get(slug=pk)  #!
     except:
@@ -150,5 +150,30 @@ def result6(request: Request, pk):
         "d9": int(data_copy.d9) * 2,
     }
     return render(request, 'forms/result/result6.html', {  #!
+        "form": dt,
+    })  
+
+
+def result7(request: Request, pk: int):
+    try:
+        data_copy = Him.objects.get(slug=pk)  #!
+    except:
+        return redirect('10him')  #!
+    dt = {
+        "name": data_copy.name,
+        "slug": data_copy.slug,
+        "d1": int(data_copy.d1) * 2,
+        "d2": int(data_copy.d2),
+        "d3": int(data_copy.d3),
+        "d4": int(data_copy.d4),
+        "d5": int(data_copy.d5),
+        "d6": int(data_copy.d6),
+        "d7": int(data_copy.d7) * 2,
+        "d8": int(data_copy.d8) * 2,
+        "d9": int(data_copy.d9),
+        "d10": int(data_copy.d10) * 2,
+        "d11": int(data_copy.d11),
+    }
+    return render(request, 'forms/result/result7.html', {  #!
         "form": dt,
     })  

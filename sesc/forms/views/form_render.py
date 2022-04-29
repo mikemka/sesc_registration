@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from django.core.handlers.wsgi import WSGIRequest as Request
-from forms.forms import GumForm, SgumForm, SocEkForm, MatInfForm, FizMatForm, FizTechForm
+from forms.forms import GumForm, SgumForm, SocEkForm, MatInfForm, FizMatForm, FizTechForm, HimForm
 
 
 
@@ -80,5 +80,19 @@ def form6(request: Request):
             slug = frm.cleaned_data['slug']
             frm.save()
             return redirect(f'../6/{slug}/')  #!
+        data['error'] = 'Ошибка! Проверьте правильность введенных данных!'
+    return render(request, template_name, data)
+
+
+def form7(request: Request):
+    rn = HimForm()  #!
+    template_name = 'forms/form/form7.html'  #!
+    data = {'form': rn, 'error': ''}
+    if request.method == 'POST':
+        frm = HimForm(request.POST)  #!
+        if frm.is_valid():
+            slug = frm.cleaned_data['slug']
+            frm.save()
+            return redirect(f'../7/{slug}/')  #!
         data['error'] = 'Ошибка! Проверьте правильность введенных данных!'
     return render(request, template_name, data)

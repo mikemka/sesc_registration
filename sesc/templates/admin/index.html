@@ -1,7 +1,7 @@
 {% extends "admin/base_site.html" %}
 {% load i18n static %}
 
-{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/dashboard.css" %}">{% endblock %}
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static 'admin/css/dashboard.css' %}">{% endblock %}
 
 {% block coltype %}colMS{% endblock %}
 
@@ -20,7 +20,6 @@
 {% block sidebar %}
 <div id="content-related">
     <div class="module" style="margin-bottom: 8px;">
-        {# custom #}
         <h2><div><a href="javascript:Export()">Экспорт в файл .xlsx</a></div></h2>
         <script>
             function Export() {
