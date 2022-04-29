@@ -15,7 +15,7 @@
 - [x] 10 хим
 - [x] 10 био
 
-- [ ] Local Bootstrap
+- [x] Local Bootstrap
 
 - [ ] Выбрать хостинг
 
