@@ -4,6 +4,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.http import HttpResponse
+from django.shortcuts import redirect
 from django.urls import path
 from main import views as main
 from forms import views as forms
@@ -14,8 +15,9 @@ urlpatterns = [
     path('lk/', admin.site.urls, name='admin'),
     path('terms/', main.terms, name='terms'),
     path('export/', export, name='export'),
-
-    path('aboba/', (lambda request: HttpResponse(' '.join([f'<span style=\'color: rgb({randint(1, 255)}, {randint(1, 255)}, {randint(1, 255)});\'>абоба</span>' for _ in range(500)]))), name='aboba'),
+    path('абоба/', (lambda request: HttpResponse(' '.join([f'<span style=\'color: rgb({randint(1, 255)}, {randint(1, 255)}, {randint(1, 255)});\'>абоба</span>' for _ in range(500)]))), name='aboba'),
+    path('mikemka/', (lambda request: redirect('https://mkme.ml')), name='mikemka'),
+    path('mkme/', (lambda request: redirect('https://mkme.ml')), name='mkme'),
 
     path('', main.home, name='home'),
 
@@ -39,6 +41,9 @@ urlpatterns = [
 
     path('7/<slug:pk>/', forms.result7),
     path('7/', forms.form7, name='10him'),
+
+    path('8/<slug:pk>/', forms.result8),
+    path('8/', forms.form8, name='10bio'),
 ]
 
 if settings.DEBUG:

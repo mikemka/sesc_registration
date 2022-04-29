@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from django.core.handlers.wsgi import WSGIRequest as Request
-from forms.models import Gum, Sgum, SocEk, MatInf, FizMat, FizTech, Him
+from forms.models import Gum, Sgum, SocEk, MatInf, FizMat, FizTech, Him, Bio
 
 
 def result(request: Request, pk: int):
@@ -175,5 +175,30 @@ def result7(request: Request, pk: int):
         "d11": int(data_copy.d11),
     }
     return render(request, 'forms/result/result7.html', {  #!
+        "form": dt,
+    })  
+
+
+def result8(request: Request, pk: int):
+    try:
+        data_copy = Bio.objects.get(slug=pk)  #!
+    except:
+        return redirect('10bio')  #!
+    dt = {
+        "name": data_copy.name,
+        "slug": data_copy.slug,
+        "d1": int(data_copy.d1) * 2,
+        "d2": int(data_copy.d2),
+        "d3": int(data_copy.d3),
+        "d4": int(data_copy.d4),
+        "d5": int(data_copy.d5),
+        "d6": int(data_copy.d6) * 2,
+        "d7": int(data_copy.d7) * 2,
+        "d8": int(data_copy.d8),
+        "d9": int(data_copy.d9) * 3,
+        "d10": int(data_copy.d10) * 2,
+        "d11": int(data_copy.d11) * 2,
+    }
+    return render(request, 'forms/result/result8.html', {  #!
         "form": dt,
     })  

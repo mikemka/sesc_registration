@@ -136,3 +136,24 @@ class Him(BaseTemplate, models.Model):
     
     def __str__(self) -> str:
         return self.name
+
+
+class Bio(BaseTemplate, models.Model):
+    d1 = models.BooleanField('Обществознание (Б)', default=False)
+    d2 = models.BooleanField('География (Б)', default=False)
+    d3 = models.BooleanField('МХК (Б)', default=False)
+    d4 = models.BooleanField('Теория познания (Б)', default=False)
+    d5 = models.BooleanField('Информатика (Б)', default=False)
+    d6 = models.BooleanField('Физика (Б)', default=False)
+    d7 = models.BooleanField('Решение сложных задач по математике', default=False)
+    d8 = models.BooleanField('Информатика в задачах', default=False)
+    d9 = models.BooleanField('Сложные вопросы ботаники, зоологии, анатомии', default=False)
+    d10 = models.BooleanField('Химические задачи повышенной сложности', default=False)
+    d11 = models.BooleanField('Биологический практикум', default=False)
+
+    class Meta():
+        verbose_name = 'ученик'
+        verbose_name_plural = '10 био'
+    
+    def __str__(self) -> str:
+        return self.name

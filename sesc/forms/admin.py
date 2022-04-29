@@ -1,7 +1,7 @@
 from core.admin import FormsAdminTemplate as Template
 from django.contrib.admin import site, ModelAdmin
 from django.utils.safestring import mark_safe
-from forms.models import Gum, Sgum, SocEk, MatInf, FizMat, Him
+from forms.models import Gum, Sgum, SocEk, MatInf, FizMat, FizTech, Him, Bio
 
 
 class GumAdmin(Template, ModelAdmin):
@@ -39,9 +39,23 @@ class FizMatAdmin(Template, ModelAdmin):
     get_url.short_description = 'ID'
 
 
-class HimAdmin(Template, ModelAdmin):
+class FizTechAdmin(Template, ModelAdmin):
     def get_url(self, object):
         return mark_safe(f"<a href='{'../' * 10}6/{object.slug}/'>{object.slug}</a>")
+    
+    get_url.short_description = 'ID'
+
+
+class HimAdmin(Template, ModelAdmin):
+    def get_url(self, object):
+        return mark_safe(f"<a href='{'../' * 10}7/{object.slug}/'>{object.slug}</a>")
+    
+    get_url.short_description = 'ID'
+
+
+class BioAdmin(Template, ModelAdmin):
+    def get_url(self, object):
+        return mark_safe(f"<a href='{'../' * 10}8/{object.slug}/'>{object.slug}</a>")
     
     get_url.short_description = 'ID'
 
@@ -51,4 +65,6 @@ site.register(Sgum, SgumAdmin)
 site.register(SocEk, SocEkAdmin)
 site.register(MatInf, MatInfAdmin)
 site.register(FizMat, FizMatAdmin)
+site.register(FizTech, FizTechAdmin)
 site.register(Him, HimAdmin)
+site.register(Bio, BioAdmin)

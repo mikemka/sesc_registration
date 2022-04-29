@@ -1,8 +1,8 @@
 {% extends 'forms/includes/result_template.html' %}
 
 {% block education_profile %}
-<p>Направление подготовки: Точные науки. Профиль подготовки: <b>Физико-технический</b>.</p>
-<p>Углубленные предметы:  математика, физика, инженерная графика.</p>
+<p>Направление подготовки: Точные науки. Профиль подготовки: <b>Биологический</b>.</p>
+<p>Углубленные предметы: биология, математика, химия.</p>
 {% endblock %}
 
 {% block tbody %}
@@ -54,7 +54,7 @@
     <td>1</td>
     <td>70</td>
     <td>нет</td>
-    <td class="table-secondary">нет</td>
+    <td>нет</td>
 </tr>
 
 <tr>
@@ -78,8 +78,8 @@
 </tr>
 
 <tr>
-    <td rowspan="2">Математика и информатика</td>
-    <td class="table-success">Математика: алгебра и начала математического анализа, геометрия (У)</td>
+    <td>Математика и информатика</td>
+    <td>Математика: алгебра и начала математического анализа, геометрия (У)</td>
     <td>6</td>
     <td>6</td>
     <td>420</td>
@@ -87,29 +87,30 @@
     <td>ЕГЭ</td>
 </tr>
 
+
 <tr>
-    <td class="table-success">Информатика (У)</td>
-    <td>4</td>
-    <td>4</td>
-    <td>280</td>
+    <td rowspan="3">Естественные науки</td>
+    <td>Биология (У)</td>
+    <td>3</td>
+    <td>3</td>
+    <td>210</td>
     <td>экзамен</td>
     <td>по выбору</td>
 </tr>
 
 <tr>
-    <td rowspan="2">Естественные науки</td>
-    <td class="table-success">Физика (У)</td>
-    <td>5</td>
-    <td>5</td>
-    <td>350</td>
+    <td class="table-success">Химия (У)</td>
+    <td>3</td>
+    <td>3</td>
+    <td>210</td>
     <td>экзамен</td>
     <td>по выбору</td>
 </tr>
 
 <tr>
     <td>Астрономия (Б)*</td>
-    <td>0</td>
     <td>1</td>
+    <td>0</td>
     <td>35</td>
     <td>нет</td>
     <td>нет</td>
@@ -143,11 +144,11 @@
     <td>нет</td>
 </tr>
 
-<tr class="table-danger">
+<tr>
     <td colspan="2">Всего часов Блок 1</td>
-    <td>29</td>
-    <td>30</td>
-    <td>1995</td>
+    <td>27</td>
+    <td>26</td>
+    <td>1785</td>
     <td colspan="3"></td>
 </tr>
 
@@ -198,8 +199,8 @@
 </tr>
 
 <tr>
-    <td rowspan="2">Естественные науки</td>
-    <td>Биология (Б)</td>
+    <td>Математика и информатика</td>
+    <td>Информатика (Б)</td>
     <td id="5">{{ form.d5 }}</td>
     <td>{{ form.d5 }}</td>
     <td id="d5"></td>
@@ -208,7 +209,8 @@
 </tr>
 
 <tr>
-    <td>Химия (Б)</td>
+    <td>Естественные науки</td>
+    <td>Физика (Б)</td>
     <td id="6">{{ form.d6 }}</td>
     <td>{{ form.d6 }}</td>
     <td id="d6"></td>
@@ -222,71 +224,73 @@
 
 <tr>
     <td rowspan="2">Математика и информатика</td>
-    <td class="table-success">Решение сложных задач по математике</td>
-    <td>2</td>
-    <td>2</td>
-    <td>140</td>
-    <td rowspan="5">отметка</td>
-    <td class="table-secondary">нет</td>
-    <td class="table-secondary">нет</td>
-</tr>
-
-
-<tr>
-    <td>Инженерная графика (геометрическое и проекционное черчение)</td>
+    <td>Решение сложных задач по математике</td>
     <td id="7">{{ form.d7 }}</td>
     <td>{{ form.d7 }}</td>
     <td id="d7"></td>
-    <td class="table-secondary">нет</td>
-    <td class="table-secondary">нет</td>
+    <td rowspan="6">отметка</td>
+    <td>нет</td>
+    <td>нет</td>
 </tr>
 
 <tr>
-    <td rowspan="3">Естественные науки</td>
-    <td class="table-success">Физические задачи повышенной сложности</td>
-    <td>2</td>
-    <td>2</td>
-    <td>140</td>
-    <td class="table-secondary">нет</td>
-    <td class="table-secondary">нет</td>
-</tr>
-
-<tr>
-    <td>Астрономия</td>
+    <td>Информатика в задачах</td>
     <td id="8">{{ form.d8 }}</td>
-    <td>0</td>
+    <td>{{ form.d8 }}</td>
     <td id="d8"></td>
-    <td class="table-secondary">нет</td>
-    <td class="table-secondary">нет</td>
+    <td>нет</td>
+    <td>нет</td>
 </tr>
 
 <tr>
-    <td>Избранные главы учебников естественных наук</td>
+    <td rowspan="4">Естественные науки</td>
+    <td class="table-success">Биологические задачи повышенной сложности</td>
+    <td>3</td>
+    <td>3</td>
+    <td>210</td>
+    <td>нет</td>
+    <td>нет</td>
+</tr>
+
+<tr>
+    <td>Сложные вопросы ботаники, зоологии, анатомии</td>
     <td id="9">{{ form.d9 }}</td>
     <td>{{ form.d9 }}</td>
     <td id="d9"></td>
-    <td class="table-secondary">нет</td>
-    <td class="table-secondary">нет</td>
+    <td>нет</td>
+    <td>нет</td>
+</tr>
+
+<tr>
+    <td>Химические задачи повышенной сложности</td>
+    <td id="10">{{ form.d10 }}</td>
+    <td>{{ form.d10 }}</td>
+    <td id="d10"></td>
+    <td>нет</td>
+    <td>нет</td>
+</tr>
+
+<tr>
+    <td>Биологический практикум</td>
+    <td id="11">{{ form.d11 }}</td>
+    <td>{{ form.d11 }}</td>
+    <td id="d11"></td>
+    <td>нет</td>
+    <td>нет</td>
 </tr>
 
 <tr><td colspan="8" class="table-warning"><strong>Блок 3: внеурочная деятельность (выбрать не более 10 часов в неделю)</strong></td></tr>
 
 <tr class="table-danger"><td colspan="2">Всего часов внеурочной деятельности</td><td>10</td><td>10</td><td colspan="4"></td></tr>
 
-<tr class="table-danger"><td colspan="2">Количество часов по учебному плану (включая внеурочную деятельность)</td><td>{{ form.d1|add:form.d2|add:form.d3|add:form.d4|add:form.d5|add:form.d6|add:form.d7|add:form.d8|add:43 }}</td><td>{{ form.d1|add:form.d2|add:form.d3|add:form.d4|add:form.d5|add:form.d6|add:form.d8|add:43 }}</td><td colspan="4"></td></tr>
+<tr class="table-danger"><td colspan="2">Количество часов по учебному плану (включая внеурочную деятельность)</td><td>{{ form.d1|add:form.d2|add:form.d3|add:form.d4|add:form.d5|add:form.d6|add:form.d7|add:form.d8|add:form.d9|add:form.d10|add:form.d11|add:37 }}</td><td>{{ form.d1|add:form.d2|add:form.d3|add:form.d4|add:form.d5|add:form.d6|add:form.d7|add:form.d8|add:form.d9|add:form.d10|add:form.d11|add:36 }}</td><td colspan="4"></td></tr>
 
 {% endblock %}
 
 {% block disable_autocount %}
 <script>
-    document.getElementById('d1').textContent = document.getElementById('1').textContent * 2 * 35;
-    document.getElementById('d2').textContent = document.getElementById('2').textContent * 2 * 35;
-    document.getElementById('d3').textContent = document.getElementById('3').textContent * 2 * 35;
-    document.getElementById('d4').textContent = document.getElementById('4').textContent * 2 * 35;
-    document.getElementById('d5').textContent = document.getElementById('5').textContent * 2 * 35;
-    document.getElementById('d6').textContent = document.getElementById('6').textContent * 2 * 35;
-    document.getElementById('d7').textContent = document.getElementById('7').textContent * 2 * 35;
-    document.getElementById('d8').textContent = document.getElementById('8').textContent * 35;
-    document.getElementById('d9').textContent = document.getElementById('9').textContent * 2 * 35;
+    for (let i = 1; i <= 11; i++) {
+        document.getElementById(`d${i}`).textContent = document.getElementById(i).textContent * 2 * 35;
+    }
 </script>
 {% endblock %}
