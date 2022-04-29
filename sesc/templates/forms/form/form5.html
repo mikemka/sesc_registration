@@ -1,18 +1,19 @@
 {% extends 'core/base.html' %}
+{% load static %}
 
 {% block content %}
 <main class="py-3 text-left container">
 <div class="row">
     <div class="mx-auto">
         <div class="rounded shadow">
-            {% include 'forms/navbar_back.html' %}
+            {% include 'forms/includes/navbar_back.html' %}
             <article class="container pb-3">
                 <p class="text-end mb-0">Принято Ученым советом СУНЦ</p>
                 <p class="text-end lh-sm">протокол № 10 от 16 декабря 2021 года</p>
 
                 <p class="text-center mb-0 lead">Учебный план для 10-11 класса.</p>
-                <p class="text-center lh-sm mb-0">Направление подготовки: Точные науки. Профиль подготовки: Математико-информационный.</p>
-                <p class="text-center lh-sm">Углубленные предметы: иностранный язык, математика, информатика.</p>
+                <p class="text-center lh-sm mb-0">Направление подготовки: Точные науки. Профиль подготовки: Физико-математический.</p>
+                <p class="text-center lh-sm">Углубленные предметы: математика, физика, информатика.</p>
                 
                 {% if error %}<div class="alert alert-danger mb-3">{{ error }}</div>{% endif %}
                 
@@ -59,8 +60,8 @@
                     <td>Русский язык (Б)</td>
                     <td colspan="2">1</td>
                     <td>70</td>
-                    <td rowspan="11">отметка</td>
-                    <td class="table-secondary" rowspan="3"></td>
+                    <td rowspan="12">отметка</td>
+                    <td class="table-secondary" rowspan="5"></td>
                     <td>ЕГЭ</td>
                 </tr>
 
@@ -81,10 +82,9 @@
 
                 <tr>
                     <td>Иностранные языки</td>
-                    <td class="table-success">Иностранный язык (У)</td>
-                    <td colspan="2">6</td>
-                    <td>420</td>
-                    <td>диф. зачет</td>
+                    <td>Иностранный язык (Б)</td>
+                    <td colspan="2">3</td>
+                    <td>210</td>
                     <td rowspan="2">по выбору</td>
                 </tr>
 
@@ -93,7 +93,6 @@
                     <td>История (Б)</td>
                     <td colspan="2">2</td>
                     <td>140</td>
-                    <td class="table-secondary"></td>
                 </tr>
 
                 <tr>
@@ -101,7 +100,7 @@
                     <td class="table-success">Математика: алгебра и начала математического анализа, геометрия (У)</td>
                     <td colspan="2">6</td>
                     <td>420</td>
-                    <td rowspan="2">экзамен</td>
+                    <td rowspan="3">экзамен</td>
                     <td>ЕГЭ</td>
                 </tr>
 
@@ -109,14 +108,20 @@
                     <td class="table-success">Информатика (У)</td>
                     <td colspan="2">4</td>
                     <td>280</td>
-                    <td>по выбору</td>
+                    <td rowspan="2">по выбору</td>
                 </tr>
 
                 <tr>
-                    <td>Естественные науки</td>
+                    <td rowspan="2">Естественные науки</td>
+                    <td class="table-success">Физика (У)</td>
+                    <td colspan="2">5</td>
+                    <td>350</td>
+                </tr>
+
+                <tr>
                     <td>Астрономия (Б)*</td>
-                    <td>1</td>
                     <td>0</td>
+                    <td>1</td>
                     <td>35</td>
                     <td colspan="2" rowspan="4" class="table-secondary"></td>
                 </tr>
@@ -142,16 +147,16 @@
 
                 <tr class="table-danger">
                     <td colspan="2">Всего часов Блок 1</td>
-                    <td>28</td>
-                    <td>27</td>
-                    <td>1855</td>
+                    <td>29</td>
+                    <td>30</td>
+                    <td>1995</td>
                     <td colspan="3"></td>
                 </tr>
 
                 <tr class="table-warning">
                     <td colspan="2"><b>Доступно часов для выбора учебных предметов по выбору и элективных курсов</b></td>
-                    <td>9</td>
-                    <td>10</td>
+                    <td>8</td>
+                    <td>7</td>
                     <td colspan="4"></td>
                 </tr>
             </tbody>
@@ -193,8 +198,8 @@
                     <td>Обществознание (Б)</td>
                     <td colspan="2">{{ form.d1 }} 2 ч.</td>
                     <td>140</td>
-                    <td rowspan="7">отметка</td>
-                    <td class="table-secondary" rowspan="7"></td>
+                    <td rowspan="6">отметка</td>
+                    <td class="table-secondary" rowspan="6"></td>
                     <td rowspan="2">по выбору</td>
                 </tr>
 
@@ -218,22 +223,16 @@
                 </tr>
 
                 <tr>
-                    <td rowspan="3">Естественные науки</td>
+                    <td rowspan="2">Естественные науки</td>
                     <td>Биология (Б)</td>
                     <td colspan="2">{{ form.d5 }} 1 ч.</td>
                     <td>70</td>
-                    <td rowspan="3">по выбору</td>
-                </tr>
-
-                <tr>
-                    <td>Физика (Б)</td>
-                    <td colspan="2">{{ form.d6 }} 2 ч.</td>
-                    <td>140</td>
+                    <td rowspan="2">по выбору</td>
                 </tr>
 
                 <tr>
                     <td>Химия (Б)</td>
-                    <td colspan="2">{{ form.d7 }} 2 ч.</td>
+                    <td colspan="2">{{ form.d6 }} 2 ч.</td>
                     <td>140</td>
                 </tr>
 
@@ -242,26 +241,33 @@
                 </tr>
                 
                 <tr>
-                    <td rowspan="2">Математика и информатика</td>
+                    <td>Математика и информатика</td>
                     <td class="table-success">Решение сложных задач по математике</td>
                     <td colspan="2">
                         <input type="checkbox" class="form-check-input" disabled checked> 2 ч.
                     </td>
                     <td>140</td>
-                    <td rowspan="3">отметка</td>
-                    <td class="table-secondary" rowspan="3" colspan="2"></td>
+                    <td rowspan="4">отметка</td>
+                    <td class="table-secondary" rowspan="4" colspan="2"></td>
                 </tr>
 
                 <tr>
-                    <td class="table-success">Математические основы информатики</td>
+                    <td rowspan="3">Естественные науки</td>
+                    <td class="table-success">Физические задачи повышенной сложности</td>
                     <td colspan="2">
-                        <input type="checkbox" class="form-check-input" disabled checked> 3 ч.
+                        <input type="checkbox" class="form-check-input" disabled checked> 2 ч.
                     </td>
-                    <td>210</td>
+                    <td>140</td>
                 </tr>
 
                 <tr>
-                    <td>Естественные науки</td>
+                    <td>Астрономия</td>
+                    <td>{{ form.d7 }} 1 ч.</td>
+                    <td>0 ч.</td>
+                    <td>35</td>
+                </tr>
+
+                <tr>
                     <td>Избранные главы учебников естественных наук</td>
                     <td colspan="2">{{ form.d8 }} 2 ч.</td>
                     <td>140</td>
@@ -277,8 +283,8 @@
                 <tr class="table-primary lead" id="ext">
                     <td colspan="2" id="ext-info">Текущая недельная нагрузка</td>
                     <td id="ext1">33</td>
-                    <td id="ext2">32</td>
-                    <td id="ext3">2275</td>
+                    <td id="ext2">34</td>
+                    <td id="ext3">2345</td>
                     <td colspan="3"></td>
                 </tr>
 
@@ -315,34 +321,6 @@
 </div>
 </main>
 
-
-<script>
-    // JS <3
-    for (let i = 1; i <= 8; i++) {
-        document.getElementById(`id_d${i}`).onclick = function () {
-            let d1 = Number(document.getElementById('id_d1').checked) * 2;
-            let d2 = Number(document.getElementById('id_d2').checked);
-            let d3 = Number(document.getElementById('id_d3').checked);
-            let d4 = Number(document.getElementById('id_d4').checked);
-            let d5 = Number(document.getElementById('id_d5').checked);
-            let d6 = Number(document.getElementById('id_d6').checked) * 2;
-            let d7 = Number(document.getElementById('id_d7').checked) * 2;
-            let d8 = Number(document.getElementById('id_d8').checked) * 2;
-            let ext = d1 + d2 + d3 + d4 + d5 + d6 + d7 + d8 + 27 + 5;
-            document.getElementById("ext1").textContent = ext + 1;
-            document.getElementById("ext2").textContent = ext;
-            document.getElementById("ext3").textContent = (ext + ext + 1) * 35;
-            if ((ext < 31) || (ext + 1 > 37)) {
-                document.getElementById("ext").className = "table-dark lead";
-                document.getElementById("sbm-btn").className = "btn btn-primary disabled";
-                document.getElementById("ext-info").textContent = "Неверное количество часов нагрузки";
-            } else {
-                document.getElementById("ext").className = "table-primary lead";
-                document.getElementById("sbm-btn").className = "btn btn-primary";
-                document.getElementById("ext-info").textContent = "Текущая недельная нагрузка";
-            }
-        }
-    }
-</script>
+<script src="{% static 'core/js/form5.js' %}"></script>
 
 {% endblock %}

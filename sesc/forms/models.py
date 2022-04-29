@@ -78,3 +78,82 @@ class MatInf(BaseTemplate, models.Model):
     
     def __str__(self) -> str:
         return self.name
+
+
+class FizMat(BaseTemplate, models.Model):
+    d1 = models.BooleanField('Обществознание (Б)', default=False)
+    d2 = models.BooleanField('География (Б)', default=False)
+    d3 = models.BooleanField('МХК (Б)', default=False)
+    d4 = models.BooleanField('Теория познания (Б)', default=False)
+    d5 = models.BooleanField('Биология (Б)', default=False)
+    d6 = models.BooleanField('Химия (Б)', default=False)
+    d7 = models.BooleanField('Астрономия', default=False)
+    d8 = models.BooleanField('Избранные главы учебников естественных наук', default=False)
+
+    class Meta():
+        verbose_name = 'ученик'
+        verbose_name_plural = '10 физмат'
+    
+    def __str__(self) -> str:
+        return self.name
+
+
+class FizTech(BaseTemplate, models.Model):
+    d1 = models.BooleanField('Обществознание (Б)', default=False)
+    d2 = models.BooleanField('География (Б)', default=False)
+    d3 = models.BooleanField('МХК (Б)', default=False)
+    d4 = models.BooleanField('Теория познания (Б)', default=False)
+    d5 = models.BooleanField('Биология (Б)', default=False)
+    d6 = models.BooleanField('Химия (Б)', default=False)
+    d7 = models.BooleanField('Инженерная графика (геометрическое и проекционное черчение)', default=False)
+    d8 = models.BooleanField('Астрономия', default=False)
+    d9 = models.BooleanField('Избранные главы учебников естественных наук', default=False)
+
+    class Meta():
+        verbose_name = 'ученик'
+        verbose_name_plural = '10 физтех'
+    
+    def __str__(self) -> str:
+        return self.name
+
+
+class Him(BaseTemplate, models.Model):
+    d1 = models.BooleanField('Обществознание (Б)', default=False)
+    d2 = models.BooleanField('География (Б)', default=False)
+    d3 = models.BooleanField('МХК (Б)', default=False)
+    d4 = models.BooleanField('Теория познания (Б)', default=False)
+    d5 = models.BooleanField('Информатика (Б)', default=False)
+    d6 = models.BooleanField('Биология (Б)', default=False)
+    d7 = models.BooleanField('Решение сложных задач по математике', default=False)
+    d8 = models.BooleanField('Физические задачи повышенной сложности', default=False)
+    d9 = models.BooleanField('Биологические задачи', default=False)
+    d10 = models.BooleanField('Химический практикум', default=False)
+    d11 = models.BooleanField('Астрономия', default=False)
+
+    class Meta():
+        verbose_name = 'ученик'
+        verbose_name_plural = '10 хим'
+    
+    def __str__(self) -> str:
+        return self.name
+
+
+class Bio(BaseTemplate, models.Model):
+    d1 = models.BooleanField('Обществознание (Б)', default=False)
+    d2 = models.BooleanField('География (Б)', default=False)
+    d3 = models.BooleanField('МХК (Б)', default=False)
+    d4 = models.BooleanField('Теория познания (Б)', default=False)
+    d5 = models.BooleanField('Информатика (Б)', default=False)
+    d6 = models.BooleanField('Физика (Б)', default=False)
+    d7 = models.BooleanField('Решение сложных задач по математике', default=False)
+    d8 = models.BooleanField('Информатика в задачах', default=False)
+    d9 = models.BooleanField('Сложные вопросы ботаники, зоологии, анатомии', default=False)
+    d10 = models.BooleanField('Химические задачи повышенной сложности', default=False)
+    d11 = models.BooleanField('Биологический практикум', default=False)
+
+    class Meta():
+        verbose_name = 'ученик'
+        verbose_name_plural = '10 био'
+    
+    def __str__(self) -> str:
+        return self.name

@@ -3,60 +3,12 @@ from tempfile import NamedTemporaryFile
 from string import ascii_uppercase as EN_ALPH
 from openpyxl.styles import Font
 import openpyxl as xls
-import time
 from forms import models
 from sesc.settings import SITE_URL
+from core.subj_names import SUBJ_NAMES
 
 
 HEADER_FONT = Font(name='Times New Roman', size=14, bold=True)
-SUBJ_NAMES = {
-    "10 гум": {
-        'd1': 'Второй иностранный язык (Б)',
-        'd2': 'География (Б)',
-        'd3': 'Обществознание (Б)',
-        'd4': 'Теория познания (Б)',
-        'd5': 'Информатика (Б)',
-        'd6': 'Естествознание (Б)',
-        'd7': 'Диалоги с Чеховым',
-        'd8': 'Современная литература в жанровом аспекте',
-        'd9': 'Риторика',
-        'd10': 'История философии',
-        'd11': 'История мировой культуры',
-    },
-    "10 соцгум": {
-        'd1': 'География (Б)',
-        'd2': 'Теория познания (Б)',
-        'd3': 'МХК (Б)',
-        'd4': 'Информатика (Б)',
-        'd5': 'Естествознание (Б)',
-        'd6': 'Зарубежная литература',
-        'd7': 'Современная литература в жанровом аспекте',
-        'd8': 'Диалоги с Чеховым',
-        'd9': 'Политология',
-        'd10': 'Социология',
-        'd11': 'История философии',
-    },
-    "10 соцэк": {
-        'd1': 'Теория познания (Б)',
-        'd2': 'МХК (Б)',
-        'd3': 'География (Б)',
-        'd4': 'Информатика (Б)',
-        'd5': 'Естествознание (Б)',
-        'd6': 'Экономическая география',
-        'd7': 'История философии',
-        'd8': 'Сложные математические задачи',
-    },
-    '10 матинф': {
-        'd1': 'Обществознание (Б)',
-        'd2': 'География (Б)',
-        'd3': 'МХК (Б)',
-        'd4': 'Теория познания (Б)',
-        'd5': 'Биология (Б)',
-        'd6': 'Физика (Б)',
-        'd7': 'Химия (Б)',
-        'd8': 'Избранные главы учебников естественных наук',
-    }
-}
 
 
 def export(request):
@@ -107,6 +59,16 @@ def export(request):
             'd6': models.MatInf.objects.filter(d6=True, attached=True),
             'd7': models.MatInf.objects.filter(d7=True, attached=True),
             'd8': models.MatInf.objects.filter(d8=True, attached=True),
+        },
+        '10 физмат': {
+            'd1': models.FizMat.objects.filter(d1=True, attached=True),
+            'd2': models.FizMat.objects.filter(d2=True, attached=True),
+            'd3': models.FizMat.objects.filter(d3=True, attached=True),
+            'd4': models.FizMat.objects.filter(d4=True, attached=True),
+            'd5': models.FizMat.objects.filter(d5=True, attached=True),
+            'd6': models.FizMat.objects.filter(d6=True, attached=True),
+            'd7': models.FizMat.objects.filter(d7=True, attached=True),
+            'd8': models.FizMat.objects.filter(d8=True, attached=True),
         }
     }
 
