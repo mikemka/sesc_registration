@@ -11,7 +11,7 @@ for (let i = 1; i <= 11; i++) {
         let d9 = Number(document.getElementById('id_d9').checked);
         let d10 = Number(document.getElementById('id_d10').checked) * 2;
         let d11 = Number(document.getElementById('id_d11').checked);
-        let ext = d1 + d2 + d3 + d4 + d5 + d6 + d7 + + d8 + d9 + d10 + 28 + 3;
+        let ext = d1 + d2 + d3 + d4 + d5 + d6 + d7 + d8 + d9 + d10 + 28 + 3;
         document.getElementById("ext1").textContent = ext + d11;
         document.getElementById("ext2").textContent = ext + 1;
         document.getElementById("ext3").textContent = (ext + ext + 1 + d11) * 35;

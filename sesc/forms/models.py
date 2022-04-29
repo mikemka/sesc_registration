@@ -153,7 +153,7 @@ class Bio(BaseTemplate, models.Model):
 
     class Meta():
         verbose_name = 'ученик'
-        verbose_name_plural = '10 хим'
+        verbose_name_plural = '10 био'
     
     def __str__(self) -> str:
         return self.name

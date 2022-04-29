@@ -39,6 +39,9 @@ urlpatterns = [
 
     path('7/<slug:pk>/', forms.result7),
     path('7/', forms.form7, name='10him'),
+
+    path('8/<slug:pk>/', forms.result8),
+    path('8/', forms.form8, name='10bio'),
 ]
 
 if settings.DEBUG:
