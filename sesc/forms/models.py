@@ -115,3 +115,24 @@ class FizTech(BaseTemplate, models.Model):
     
     def __str__(self) -> str:
         return self.name
+
+
+class Him(BaseTemplate, models.Model):
+    d1 = models.BooleanField('Обществознание (Б)', default=False)
+    d2 = models.BooleanField('География (Б)', default=False)
+    d3 = models.BooleanField('МХК (Б)', default=False)
+    d4 = models.BooleanField('Теория познания (Б)', default=False)
+    d5 = models.BooleanField('Информатика (Б)', default=False)
+    d6 = models.BooleanField('Биология (Б)', default=False)
+    d7 = models.BooleanField('Решение сложных задач по математике', default=False)
+    d8 = models.BooleanField('Физические задачи повышенной сложности', default=False)
+    d9 = models.BooleanField('Биологические задачи', default=False)
+    d10 = models.BooleanField('Химический практикум', default=False)
+    d11 = models.BooleanField('Астрономия', default=False)
+
+    class Meta():
+        verbose_name = 'ученик'
+        verbose_name_plural = '10 хим'
+    
+    def __str__(self) -> str:
+        return self.name
