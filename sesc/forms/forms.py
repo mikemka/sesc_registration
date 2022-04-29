@@ -306,7 +306,6 @@ class HimForm(forms.ModelForm):
             int(self.cleaned_data['d8']) * 2,
             int(self.cleaned_data['d9']),
             int(self.cleaned_data['d10']) * 2,
-            int(self.cleaned_data['d11']),
         ))
         if ALL > 9:
             raise forms.ValidationError('Слишком много или мало часов недельной нагрузки!')
