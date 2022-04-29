@@ -60,15 +60,11 @@ class BioAdmin(Template, ModelAdmin):
     get_url.short_description = 'ID'
 
 
-def admin_register():
-    site.register(Gum, GumAdmin)
-    site.register(Sgum, SgumAdmin)
-    site.register(SocEk, SocEkAdmin)
-    site.register(MatInf, MatInfAdmin)
-    site.register(FizMat, FizMatAdmin)
-    site.register(FizTech, FizTechAdmin)
-    site.register(Him, HimAdmin)
-    site.register(Bio, BioAdmin)
-
-
-admin_register()
+site.register(Gum, GumAdmin)
+site.register(Sgum, SgumAdmin)
+site.register(SocEk, SocEkAdmin)
+site.register(MatInf, MatInfAdmin)
+site.register(FizMat, FizMatAdmin)
+site.register(FizTech, FizTechAdmin)
+site.register(Him, HimAdmin)
+site.register(Bio, BioAdmin)
