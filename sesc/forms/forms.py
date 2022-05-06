@@ -183,7 +183,7 @@ class MatInfForm(forms.ModelForm):
             2,
             3,
             int(self.cleaned_data['d6']) * 2,
-            int(self.cleaned_data['d7']) * 2,
+            int(self.cleaned_data['d7']),
             int(self.cleaned_data['d8']) * 2,
         ))
         if ALL > 9:
@@ -224,7 +224,7 @@ class FizMatForm(forms.ModelForm):
             int(self.cleaned_data['d3']),
             int(self.cleaned_data['d4']),
             int(self.cleaned_data['d5']),
-            int(self.cleaned_data['d6']) * 2,
+            int(self.cleaned_data['d6']),
             int(self.cleaned_data['d8']) * 2,
             4,
         ))

@@ -98,7 +98,7 @@ def result4(request: Request, pk: int):
         "d4": int(data_copy.d4),
         "d5": int(data_copy.d5),
         "d6": int(data_copy.d6) * 2,
-        "d7": int(data_copy.d7) * 2,
+        "d7": int(data_copy.d7),
         "d8": int(data_copy.d8) * 2,
     }
     ALL1 = sum((dt['d1'], dt['d2'], dt['d3'], dt['d4'], dt['d5'], dt['d6'], dt['d7'], dt['d8'], 5))
@@ -122,7 +122,7 @@ def result5(request: Request, pk: int):
         "d3": int(data_copy.d3),
         "d4": int(data_copy.d4),
         "d5": int(data_copy.d5),
-        "d6": int(data_copy.d6) * 2,
+        "d6": int(data_copy.d6),
         "d7": int(data_copy.d7),
         "d8": int(data_copy.d8) * 2,
     }
