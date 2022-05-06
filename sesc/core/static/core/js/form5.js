@@ -5,7 +5,7 @@ for (let i = 1; i <= 8; i++) {
         let d3 = Number(document.getElementById('id_d3').checked);
         let d4 = Number(document.getElementById('id_d4').checked);
         let d5 = Number(document.getElementById('id_d5').checked);
-        let d6 = Number(document.getElementById('id_d6').checked) * 2;
+        let d6 = Number(document.getElementById('id_d6').checked);
         let d7 = Number(document.getElementById('id_d7').checked);
         let d8 = Number(document.getElementById('id_d8').checked) * 2;
         let ext = d1 + d2 + d3 + d4 + d5 + d6 + d8 + 29 + 4;

@@ -122,7 +122,7 @@ def result5(request: Request, pk: int):
         "d3": int(data_copy.d3),
         "d4": int(data_copy.d4),
         "d5": int(data_copy.d5),
-        "d6": int(data_copy.d6) * 2,
+        "d6": int(data_copy.d6),
         "d7": int(data_copy.d7),
         "d8": int(data_copy.d8) * 2,
     }
