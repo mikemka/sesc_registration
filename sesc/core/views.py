@@ -59,7 +59,9 @@ def cell_background(iterable, color='EDEDED'):
 def export(request):
     BOOK = xls.Workbook()
     BOOK.remove_sheet(BOOK.active)
+    form_index_gl = 0
     for f_name, full_data in get_subjects().items():
+        form_index_gl += 1
         data, records = full_data
         sh = BOOK.create_sheet(f_name)
         # Merging
@@ -101,6 +103,7 @@ def export(request):
                     x += 1
             cell_center_ptserif(cell_borders([sh.cell(4 + ind, i) for i in range(1, 3 + data_len)]))
             cell_background((sh.cell(4 + ind, 1, pupil.name),), color=COLORS[1 if checked else 3]),
+            sh.cell(4 + ind, 1).hyperlink = f'{SITE_URL}/{form_index_gl}/{pupil.slug}'
         # Other styles
         col_width([sh.column_dimensions[ALPH[(2 + i) % len(ALPH)]] for i in range(data_len)])
         col_width((sh.column_dimensions['A'],), width=24.33)
