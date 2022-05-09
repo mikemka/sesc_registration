@@ -27,7 +27,10 @@
         background-color: #9E9494;
     }
     .item-2 {
-        background-color: #CFC5C5;
+        background-color: #AEA4A4;
+    }
+    .item-3 {
+        background-color: #BEB4B4;
     }
     .item {
         border-radius: 0.7em;
@@ -59,7 +62,7 @@
 <section class="container mb-4">
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-3">
         {% for form in forms %}
-        <a class="container text-center lead text-white item item-{% cycle '1' '2' %}" href="{% url form.0 %}" style="text-decoration: none;">
+        <a class="container text-center lead text-white item item-{% cycle '1' '2' '3' '2' %}" href="{% url form.0 %}" style="text-decoration: none;">
             {{ form.1 }}
         </a>
         {% endfor %}
