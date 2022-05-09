@@ -69,44 +69,51 @@ def export(request):
         sh.merge_cells('B1:B3')
         sh.merge_cells(start_row=1, end_row=1, start_column=3, end_column=2 + (data_len := len(data[0]) + len(data[1])))
         sh.merge_cells(start_row=2, end_row=2, start_column=3, end_column=2 + len(data[0]))
-        sh.merge_cells(start_row=2, end_row=2, start_column=3 + len(data[0]),
-                       end_column=2 + data_len)
+        sh.merge_cells(start_row=2, end_row=2, start_column=3 + len(data[0]), end_column=2 + data_len)
         # Headers
         cell_center_ptserif((
             sh.cell(1, 1, f'Профиль {f_name}'),
             sh.cell(1, 2, 'класс'),
-            cell_background(
-                (sh.cell(1, 3, 'Блок 2: часть, формируемая участниками образовательных отношений'),)
-            )[-1],
+            cell_background((sh.cell(1, 3, 'Блок 2: часть, формируемая участниками образовательных отношений'),))[-1],
             sh.cell(2, 1, 'Ф.И.О. обучающегося'),
             sh.cell(2, 3, 'Учебные предметы по выбору'),
             sh.cell(2, 3 + len(data[0]), 'Элективные курсы')
         ))
-        cell_borders(summ([[sh.cell(i, 3 + j) for j in range(data_len)] for i in (2, 3)]))
         # Add subjects
-        ind, COLORS = 2, ('E1EFDA', 'FFF2CD', 'FFBF00', 'FF8585')
+        ind, COLORS = 2, ('E1EFDA', 'FFF2CD', 'FFBF00', 'FFAAAA')
         for x, i in enumerate(data):
             cell_background((sh.cell(2, ind + 1),), color=COLORS[x])
             for j in i:
                 cell_center_ptserif(cell_background((sh.cell(3, (ind := ind + 1), j),), color=COLORS[x]))
         # Add pupils
+        stats = {}
         for ind, pupil in enumerate(records):
-            cell_background((sh.cell(4 + ind, 2, '-'),))
+            cell_background((sh.cell(4 + ind, 2),))
             x, checked = 0, False
             for y, section in enumerate(data):
                 for subject in section:
+                    stats.setdefault(subject, 0)
                     if section[subject] == 1 or pupil in section[subject]:
                         if section[subject] != 1:
                             checked = True
+                        stats[subject] += 1
                         sh.cell(4 + ind, 3 + x, 1)
                     cell_background((sh.cell(4 + ind, 3 + x),), color=COLORS[y])
                     x += 1
             cell_center_ptserif(cell_borders([sh.cell(4 + ind, i) for i in range(1, 3 + data_len)]))
             cell_background((sh.cell(4 + ind, 1, pupil.name),), color=COLORS[1 if checked else 3]),
             sh.cell(4 + ind, 1).hyperlink = f'{SITE_URL}/{form_index_gl}/{pupil.slug}'
+        # Add statistics
+        sh.merge_cells(start_row=4 + len(records), end_row=4 + len(records), start_column=1, end_column=2)
+        sh.cell(4 + len(records), 1, 'всего человек в группе')
+        for i, j in enumerate(stats):
+            sh.cell(4 + len(records), 3 + i, stats[j])
         # Other styles
+        cell_borders(summ([[sh.cell(i, 3 + j) for j in range(data_len)] for i in range(2, 4)]))
+        cell_center_ptserif(cell_borders(cell_background([sh.cell(4 + len(records), i) for i in range(1, data_len + 3)], color=COLORS[2])))
         col_width([sh.column_dimensions[ALPH[(2 + i) % len(ALPH)]] for i in range(data_len)])
         col_width((sh.column_dimensions['A'],), width=24.33)
+    # TODO: Add global statistics
     # Sending .xlsx
     book_file = NamedTemporaryFile(prefix='exp_', suffix='.xlsx')
     BOOK.save(book_file.name)
