@@ -59,8 +59,9 @@ def cell_background(iterable, color='EDEDED'):
 def export(request):
     BOOK = xls.Workbook()
     BOOK.remove_sheet(BOOK.active)
+    COLORS = ('E1EFDA', 'FFF2CD', 'FFBF00', 'FFAAAA')
     form_index_gl = 0
-    for f_name, full_data in get_subjects().items():
+    for f_name, full_data in (gl_subj_info := get_subjects().items()):
         form_index_gl += 1
         data, records = full_data
         sh = BOOK.create_sheet(f_name)
@@ -80,7 +81,7 @@ def export(request):
             sh.cell(2, 3 + len(data[0]), 'Элективные курсы')
         ))
         # Add subjects
-        ind, COLORS = 2, ('E1EFDA', 'FFF2CD', 'FFBF00', 'FFAAAA')
+        ind = 2
         for x, i in enumerate(data):
             cell_background((sh.cell(2, ind + 1),), color=COLORS[x])
             for j in i:
@@ -113,7 +114,25 @@ def export(request):
         cell_center_ptserif(cell_borders(cell_background([sh.cell(4 + len(records), i) for i in range(1, data_len + 3)], color=COLORS[2])))
         col_width([sh.column_dimensions[ALPH[(2 + i) % len(ALPH)]] for i in range(data_len)])
         col_width((sh.column_dimensions['A'],), width=24.33)
-    # TODO: Add global statistics
+    # Global statistics
+    stats = [{} for _ in range(2)]
+    for f_name, info in gl_subj_info:
+        info, all_pupils = info
+        for pos, block in enumerate(info):
+            for subject, s_info in block.items():
+                stats[pos][subject] = stats[pos].setdefault(subject, 0) + s_info.count() if s_info != 1 else all_pupils.count()
+    sh, x = BOOK.create_sheet('свод по группам'), 2
+    for color, block in enumerate(stats):
+        for subject, num in block.items():
+            cell_borders(cell_center_ptserif([sh.cell(x, 2, num), sh.cell(x, 3, num / 10)] + cell_background([sh.cell(x, 1, subject)], color=COLORS[color])))
+            sh.row_dimensions[x].height = 50
+            x += 1
+    # Styles
+    cell_center_ptserif(cell_background((sh.cell(1, 1), sh.cell(1, 2), sh.cell(1, 3, 'количество групп (10 человек в группе)'))))
+    col_width((sh.column_dimensions['A'],), width=24)
+    col_width((sh.column_dimensions['B'],), width=10)
+    col_width((sh.column_dimensions['C'],))
+    cell_borders((sh.cell(1, 3),))
     # Sending .xlsx
     book_file = NamedTemporaryFile(prefix='exp_', suffix='.xlsx')
     BOOK.save(book_file.name)
